@@ -18,7 +18,7 @@ para quem ele serve.
 | Arthur Giovanni Lacerda Lisboa | 202601758233 | @Atgiovanni774 | **Líder** |
 | Jonata Romano Guimarães | 202603331725 | @Jonata Romano | Integrante |
 | Guilherme Lopes Gomes | 202602601851 | @Guilhermez7 | Integrante |
-| Felipe Antunes Costa | 2026xxxxx | @felipeac | Integrante |
+| Matheus Tadeu Nunes Vidigal Tiote | 202603302521 | @matheustnvtiote-commits | Integrante |
 | Marina Souza Lima | 2026xxxxx | @marinaslima | Integrante |
 
 ## Estrutura do projeto
