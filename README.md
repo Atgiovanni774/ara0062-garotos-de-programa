@@ -1,10 +1,7 @@
-# Equipe Delta — Escola Delta de Idiomas
+# Equipe Garotos de Programa — Tema:
 
 Projeto da disciplina **ARA0062 · Desenvolvimento Web em HTML5, CSS, JavaScript
 e PHP** — Centro Universitário Newton Paiva, 2026/2.
-
-> Troque o título acima pelo nome da sua equipe e pelo tema do projeto de vocês.
-> Todo o resto deste arquivo é modelo: substitua os dados de exemplo.
 
 ## Tema do projeto
 
@@ -14,19 +11,15 @@ para quem ele serve.
 
 ## Equipe
 
-**Líder:** Daniela Prado Vieira
+**Líder:** Arthur Giovanni Lacerda Lisboa
 
 | Nome completo | Matrícula | GitHub | Papel |
 |---|---|---|---|
-| Ana Beatriz Nogueira | 2026xxxxx | @anabnogueira | integrante |
-| Carlos Eduardo Ramos | 2026xxxxx | @cadu-ramos | integrante |
-| Daniela Prado Vieira | 2026xxxxx | @dani-prado | **líder** |
+| Arthur Giovanni Lacerda Lisboa | 202601758233 | @Atgiovanni774 | **líder** |
+| Jonata Romano Guimarães | 202603331725 | @Jonata Romano | integrante |
+| Daniela Prado Vieira | 2026xxxxx | @dani-prado |  |
 | Felipe Antunes Costa | 2026xxxxx | @felipeac | integrante |
 | Marina Souza Lima | 2026xxxxx | @marinaslima | integrante |
-| Rafael Teixeira Alves | 2026xxxxx | @rafaelalves | integrante |
-
-Cada integrante acrescenta a **sua própria linha** nesta tabela, pelo GitHub.
-Esse é o commit que registra a sua participação.
 
 ## Estrutura do projeto
 
