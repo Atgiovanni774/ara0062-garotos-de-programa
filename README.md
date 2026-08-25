@@ -19,7 +19,7 @@ para quem ele serve.
 | Jonata Romano Guimarães | 202603331725 | @Jonata Romano | Integrante |
 | Guilherme Lopes Gomes | 202602601851 | @Guilhermez7 | Integrante |
 | Matheus Tadeu Nunes Vidigal Tiote | 202603302521 | @matheustnvtiote-commits | Integrante |
-| Marina Souza Lima | 2026xxxxx | @marinaslima | Integrante |
+| Felipe Herminio Nunes | 202601592203 | @felipenunesrosangela-arte | Integrante |
 
 ## Estrutura do projeto
 
