@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Projeto da disciplina ARA0062 — Equipe Delta.">
+    <title>Escola Delta de Idiomas — Equipe Delta</title>
+
+    <!--
+      O CSS ainda está vazio: ele começa a ser escrito na aula 04.
+      A ligação já fica pronta aqui para ninguém ter de lembrar depois.
+    -->
+    <link rel="stylesheet" href="css/estilo.css">
+  </head>
+
+  <body>
+
+    <header>
+      <h1>Escola Delta de Idiomas</h1>
+      <p>Projeto da equipe Delta — ARA0062</p>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <section id="sobre">
+        <h2>Sobre o projeto</h2>
+        <p>
+          Troque este conteúdo pelo do projeto de vocês. O que não muda é a
+          estrutura: este arquivo é a raiz do <code>frontend/</code>, com
+          <code>css/</code>, <code>js/</code> e <code>img/</code> ao lado dele.
+          Todo PHP mora no <code>backend/</code>, um nível acima.
+        </p>
+      </section>
+
+      <section id="contato">
+        <h2>Contato</h2>
+        <p>O formulário de contato entra aqui.</p>
+
+        <!--
+          No ciclo 8, o action deste formulário aponta para o backend:
+          <form action="../backend/processa-contato.php" method="post">
+          Os dois pontos sobem uma pasta (saem do frontend) antes de entrar
+          no backend. Enquanto não há PHP, o action fica em "#".
+        -->
+      </section>
+    </main>
+
+    <footer>
+      <p>Equipe Delta &middot; 2026 &middot; ARA0062 &middot; Newton Paiva</p>
+    </footer>
+
+    <!--
+      O JavaScript também está vazio por enquanto — ele entra no ciclo 6.
+      defer faz o script rodar depois que a página terminou de carregar.
+    -->
+    <script src="js/script.js" defer></script>
+
+  </body>
+</html>

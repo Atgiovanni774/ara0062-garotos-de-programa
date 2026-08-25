@@ -1,0 +1,6 @@
+# Arquivos que o Windows e os editores criam sozinhos e que não fazem
+# parte do projeto. Este arquivo é opcional, mas evita sujeira no repositório.
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
