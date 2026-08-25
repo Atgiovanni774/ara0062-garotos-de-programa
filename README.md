@@ -15,11 +15,11 @@ para quem ele serve.
 
 | Nome completo | Matrícula | GitHub | Papel |
 |---|---|---|---|
-| Arthur Giovanni Lacerda Lisboa | 202601758233 | @Atgiovanni774 | **líder** |
-| Jonata Romano Guimarães | 202603331725 | @Jonata Romano | integrante |
-| Daniela Prado Vieira | 2026xxxxx | @dani-prado |  |
-| Felipe Antunes Costa | 2026xxxxx | @felipeac | integrante |
-| Marina Souza Lima | 2026xxxxx | @marinaslima | integrante |
+| Arthur Giovanni Lacerda Lisboa | 202601758233 | @Atgiovanni774 | **Líder** |
+| Jonata Romano Guimarães | 202603331725 | @Jonata Romano | Integrante |
+| Guilherme Lopes Gomes | 202602601851 | @Guilhermez7 | Integrante |
+| Felipe Antunes Costa | 2026xxxxx | @felipeac | Integrante |
+| Marina Souza Lima | 2026xxxxx | @marinaslima | Integrante |
 
 ## Estrutura do projeto
 
