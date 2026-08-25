@@ -66,8 +66,6 @@ Como o `index.html` está dentro de `frontend/`, os caminhos dele ficam assim:
 | uma imagem | `img/foto.jpg` |
 | um arquivo do backend | `../backend/processa-contato.php` |
 
-Os dois pontos (`..`) sobem uma pasta: saem do `frontend/` antes de entrar no
-`backend/`.
 
 ## Andamento por ciclo
 
