@@ -6,8 +6,7 @@ e PHP** — Centro Universitário Newton Paiva, 2026/2.
 ## Tema do projeto
 
 Site de uma escola de idiomas de bairro: apresentação, cursos oferecidos com
-valores e um formulário de contato. Um parágrafo basta — diga o que o site é e
-para quem ele serve.
+valores e um formulário de contato.
 
 ## Equipe
 
