@@ -15,7 +15,7 @@ valores e um formulário de contato.
 | Nome completo | Matrícula | GitHub | Papel |
 |---|---|---|---|
 | Arthur Giovanni Lacerda Lisboa | 202601758233 | @Atgiovanni774 | **Líder** |
-| Jonata Romano Guimarães | 202603331725 | @Jonata Romano | Integrante |
+| Jonata Romano Guimarães | 202603331725 | @JonataRomano | Integrante |
 | Guilherme Lopes Gomes | 202602601851 | @Guilhermez7 | Integrante |
 | Matheus Tadeu Nunes Vidigal Tiote | 202603302521 | @matheustnvtiote-commits | Integrante |
 | Felipe Herminio Nunes | 202601592203 | @felipenunesrosangela-arte | Integrante |
