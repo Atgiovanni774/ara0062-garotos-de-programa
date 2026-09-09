@@ -1,12 +1,11 @@
-# Equipe Garotos de Programa — Tema:
+# Equipe Garotos de Programa — Tema: Portal de Gestão e Acesso ao Conhecimento Operacional
 
 Projeto da disciplina **ARA0062 · Desenvolvimento Web em HTML5, CSS, JavaScript
 e PHP** — Centro Universitário Newton Paiva, 2026/2.
 
 ## Tema do projeto
 
-Site de uma escola de idiomas de bairro: apresentação, cursos oferecidos com
-valores e um formulário de contato.
+Uma solução web para centralização, padronização e consulta de procedimentos, instruções de trabalho e normas de segurança.
 
 ## Equipe
 
@@ -19,10 +18,9 @@ valores e um formulário de contato.
 | Guilherme Lopes Gomes | 202602601851 | @Guilhermez7 | Integrante |
 | Matheus Tadeu Nunes Vidigal Tiote | 202603302521 | @matheustnvtiote-commits | Integrante |
 | Felipe Herminio Nunes | 202601592203 | @felipenunesrosangela-arte | Integrante |
+| Marcos Rodrigues Rosa | 202508373777 | @(pedir para marcos commitar) | Integrante |
 
 ## Estrutura do projeto
-
-Estrutura obrigatória da disciplina. Não renomeie pastas nem arquivos.
 
 O projeto é separado em duas metades: **`frontend/`** guarda o que roda no
 navegador (HTML, CSS, JavaScript e imagens) e **`backend/`** guarda o que roda
