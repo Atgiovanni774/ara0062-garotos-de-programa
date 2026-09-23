@@ -18,7 +18,7 @@ Uma solução web para centralização, padronização e consulta de procediment
 | Guilherme Lopes Gomes | 202602601851 | @Guilhermez7 | Integrante |
 | Matheus Tadeu Nunes Vidigal Tiote | 202603302521 | @matheustnvtiote-commits | Integrante |
 | Felipe Herminio Nunes | 202601592203 | @felipenunesrosangela-arte | Integrante |
-| Marcos Rodrigues Rosa | 202508373777 | @(pedir para marcos commitar) | Integrante |
+| Marcos Rodrigues Rosa | 202508373777 | @Marquin07 | Integrante |
 
 ## Estrutura do projeto
 
