@@ -86,3 +86,54 @@ main {
     padding: 40px;
     overflow-y: auto;
 }
+
+header {
+    margin-bottom: 30px;
+}
+
+header h1 {
+    color: var(--text);
+    font-size: 2rem;
+}
+
+header p {
+    color: var(--text);
+    opacity: 0.7;
+}
+
+/* Seções (Abas) */
+.tab-content {
+    display: none;
+    background: var(--bg-card);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    animation: fadeIn 0.4s ease-in-out;
+    border: 1px solid var(--border);
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: var(--text);
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 10px;
+}
+
+/* Estilização da Imagem do Projeto */
+.project-banner {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
