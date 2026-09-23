@@ -67,7 +67,7 @@ Como o `index.html` está dentro de `frontend/`, os caminhos dele ficam assim:
 ## Andamento por ciclo
 
 - [x] Ciclo 3 — repositório, equipe e estrutura do projeto
-- [ ] Ciclo 3 — `frontend/`: página com listas, tabela e formulário de contato
-- [ ] Ciclos 4 e 5 — `frontend/css/`: identidade visual, layout e responsividade
-- [ ] Ciclos 6 e 7 — `frontend/js/`: interação, validação e dados via JSON
+- [x] Ciclo 3 — `frontend/`: página com listas, tabela e formulário de contato
+- [x] Ciclos 4 e 5 — `frontend/css/`: identidade visual, layout e responsividade
+- [x] Ciclos 6 e 7 — `frontend/js/`: interação, validação e dados via JSON
 - [ ] Ciclos 8 a 10 — `backend/`: formulário que grava e lista do banco
