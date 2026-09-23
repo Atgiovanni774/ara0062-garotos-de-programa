@@ -1,65 +1,121 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Projeto da disciplina ARA0062 — Equipe Delta.">
-    <title>Escola Delta de Idiomas — Equipe Delta</title>
-
-    <!--
-      O CSS ainda está vazio: ele começa a ser escrito na aula 04.
-      A ligação já fica pronta aqui para ninguém ter de lembrar depois.
-    -->
+    <title>Garotos de Programa - Sistema Integrado</title>
     <link rel="stylesheet" href="css/estilo.css">
-  </head>
+</head>
+<body>
 
-  <body>
+    <!-- Menu Lateral Único -->
+    <aside>
+        <div class="logo">GAROTOS DE PROGRAMA</div>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showTab('principal', event)" class="active">Principal / Equipe</a></li>
+                <li><a href="#" onclick="showTab('pesquisa', event)">Pesquisa Rápida</a></li>
+                <li><a href="#" onclick="showTab('procedimentos', event)">Procedimentos</a></li>
+                <li><a href="#" onclick="showTab('treinamentos', event)">Treinamentos</a></li>
+                <li><a href="#" onclick="showTab('relatorios', event)">Relatórios</a></li>
+                <li><a href="#" onclick="showTab('configuracoes', event)">Configurações</a></li>
+            </ul>
+        </nav>
+    </aside>
 
-    <header>
-      <h1>Escola Delta de Idiomas</h1>
-      <p>Projeto da equipe Delta — ARA0062</p>
-    </header>
-
-    <nav>
-      <ul>
-        <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#contato">Contato</a></li>
-      </ul>
-    </nav>
-
+    <!-- Área de Conteúdo -->
     <main>
-      <section id="sobre">
-        <h2>Sobre o projeto</h2>
-        <p>
-          Troque este conteúdo pelo do projeto de vocês. O que não muda é a
-          estrutura: este arquivo é a raiz do <code>frontend/</code>, com
-          <code>css/</code>, <code>js/</code> e <code>img/</code> ao lado dele.
-          Todo PHP mora no <code>backend/</code>, um nível acima.
-        </p>
-      </section>
+        <header>
+            <h1 id="page-title">Painel Principal</h1>
+            <p>Projeto Integrado ARA0062 · Unificado em página única</p>
+        </header>
 
-      <section id="contato">
-        <h2>Contato</h2>
-        <p>O formulário de contato entra aqui.</p>
+        <!-- SEÇÃO 1: PRINCIPAL -->
+        <section id="principal" class="tab-content active">
+            <h2>Integrantes e Matrículas</h2>
+            
+            <img src="img/photo-1555066931-4365d14bab8c.avif" alt="Código de programação em tela de computador representando desenvolvimento web" class="project-banner">
+            
+            <p>Trabalho unificado desenvolvido pela equipe Garotos de Programa.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome Completo</th>
+                        <th>Matrícula</th>
+                        <th>Papel</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Arthur Giovanni Lacerda Lisboa</td><td>2026017588233</td><td><strong>Líder</strong></td></tr>
+                    <tr><td>Matheus Tadeu Nunes Vidigal Tiote</td><td>202603302521</td><td>Integrante</td></tr>
+                    <tr><td>Jonata Romano Guimarães</td><td>202603331725</td><td>Integrante</td></tr>
+                    <tr><td>Guilherme Lopes</td><td>202602601851</td><td>Integrante</td></tr>
+                    <tr><td>Felipe Herminio Nunes</td><td>202601592203</td><td>Integrante</td></tr>
+                    <tr><td>Marcos Rodrigues Rosa</td><td>202508373777</td><td>Integrante</td></tr>
+                </tbody>
+            </table>
+        </section>
 
-        <!--
-          No ciclo 8, o action deste formulário aponta para o backend:
-          <form action="../backend/processa-contato.php" method="post">
-          Os dois pontos sobem uma pasta (saem do frontend) antes de entrar
-          no backend. Enquanto não há PHP, o action fica em "#".
-        -->
-      </section>
+        <!-- SEÇÃO 2: PESQUISA RÁPIDA -->
+        <section id="pesquisa" class="tab-content">
+            <h2>Pesquisa Rápida</h2>
+            <div class="form-group">
+                <label for="search-input">Pesquisar no sistema:</label>
+                <input type="text" id="search-input" placeholder="Digite o termo desejado...">
+            </div>
+            <button onclick="alert('Funcionalidade de pesquisa simulada com sucesso!')">Buscar</button>
+        </section>
+
+        <!-- SEÇÃO 3: PROCEDIMENTOS -->
+        <section id="procedimentos" class="tab-content">
+            <h2>Procedimentos Operacionais</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Procedimento 01</h3>
+                    <p>Diretrizes de desenvolvimento web, padronização de HTML5 e organização semântica das tags.</p>
+                </div>
+                <div class="card">
+                    <h3>Procedimento 02</h3>
+                    <p>Fluxo de entrega única e validação de relatórios institucionais via repositório.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 4: TREINAMENTOS -->
+        <section id="treinamentos" class="tab-content">
+            <h2>Módulo de Treinamentos</h2>
+            <p>Acompanhe os módulos de capacitação técnica disponíveis para a equipe:</p>
+            <ul style="margin-top: 15px; padding-left: 20px;">
+                <li>Introdução ao Desenvolvimento Web (HTML5 & CSS3)</li>
+                <li>Lógica de Programação e Arquitetura</li>
+                <li>Boas Práticas de Controle de Versão</li>
+            </ul>
+        </section>
+
+        <!-- SEÇÃO 5: RELATÓRIOS -->
+        <section id="relatorios" class="tab-content">
+            <h2>Relatórios de Desempenho</h2>
+            <p>Métricas consolidadas das atividades entregues e status do projeto.</p>
+            <div class="card" style="margin-top: 15px;">
+                <h3>Status Geral: Concluído (100%)</h3>
+                <p>Todas as etapas de integração e documentação foram finalizadas com sucesso.</p>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 6: CONFIGURAÇÕES -->
+        <section id="configuracoes" class="tab-content">
+            <h2>Configurações do Sistema</h2>
+            <div class="form-group">
+                <label for="theme-select">Tema da Interface:</label>
+                <select id="theme-select" onchange="mudarTema()">
+                    <option value="light">Padrão / Claro</option>
+                    <option value="dark">Escuro (Dark Mode)</option>
+                </select>
+            </div>
+        </section>
     </main>
 
-    <footer>
-      <p>Equipe Delta &middot; 2026 &middot; ARA0062 &middot; Newton Paiva</p>
-    </footer>
-
-    <!--
-      O JavaScript também está vazio por enquanto — ele entra no ciclo 6.
-      defer faz o script rodar depois que a página terminou de carregar.
-    -->
-    <script src="js/script.js" defer></script>
-
-  </body>
+    <script src="js/script.js"></script>
+</body>
 </html>
