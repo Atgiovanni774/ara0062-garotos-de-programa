@@ -188,3 +188,29 @@ th, td {
     border-bottom: 1px solid var(--border);
     color: var(--text);
 }
+
+th {
+    background-color: var(--th-bg);
+    color: var(--text);
+}
+ 
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+ 
+.card {
+    background: var(--bg-body);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    color: var(--text);
+}
+ 
+.card h3 {
+    margin-bottom: 10px;
+    color: var(--secondary);
+}
+ 
