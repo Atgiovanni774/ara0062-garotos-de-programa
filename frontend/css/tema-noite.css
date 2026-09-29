@@ -8,4 +8,10 @@
   --bg-card: #1b1e25;
   --th-bg: #20242c;
   --card-hover: #2a2f39;
+
+  /* Variáveis do Rodapé para o Modo Escuro */
+  --footer-bg: #16181d;
+  --footer-text: #e5e7eb;
+  --footer-note: #9ca3af;
+  --footer-border: #363a43;
 }
