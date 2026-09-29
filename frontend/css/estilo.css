@@ -8,6 +8,10 @@
     --bg-card: #ffffff;
     --th-bg: #f8fafc;
     --card-hover: #e2e8f0;
+    --footer-bg: #e2e8f0;
+    --footer-text: #334155;
+    --footer-note: #64748b;
+    --footer-border: #cbd5e1;
 }
 
 * {
@@ -208,4 +212,42 @@ th {
 .card h3 {
     margin-bottom: 10px;
     color: var(--secondary);
+}
+
+/* Estilos do Rodapé */
+.site-footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    padding: 30px 20px;
+    font-family: Arial, sans-serif;
+    margin-top: 40px;
+    text-align: center;
+    border-top: 1px solid var(--footer-border);
+}
+
+.footer-content {
+    max-width: 600px;
+    margin: 0 auto 20px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-content p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.footer-note {
+    color: var(--footer-note);
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--footer-border);
+    margin-top: 20px;
+    padding-top: 15px;
+    font-size: 0.85rem;
+    color: var(--footer-note);
 }
