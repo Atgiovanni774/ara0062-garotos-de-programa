@@ -1,0 +1,11 @@
+:root.dark-mode {
+  --primary: #17191f;
+  --secondary: #60a5fa;
+  --accent: #242830;
+  --text: #e5e7eb;
+  --border: #363a43;
+  --bg-body: #111318;
+  --bg-card: #1b1e25;
+  --th-bg: #20242c;
+  --card-hover: #2a2f39;
+}
