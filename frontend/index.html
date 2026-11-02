@@ -21,6 +21,7 @@
                 <li><a href="#" onclick="showTab('procedimentos', event)">Procedimentos</a></li>
                 <li><a href="#" onclick="showTab('treinamentos', event)">Treinamentos</a></li>
                 <li><a href="#" onclick="showTab('relatorios', event)">Relatórios</a></li>
+                <li><a href="#" onclick="showTab('contato', event)">Contato</a></li>
                 <li><a href="#" onclick="showTab('configuracoes', event)">Configurações</a></li>
             </ul>
         </nav>
@@ -117,6 +118,66 @@
                 </select>
             </div>
         </section>
+
+
+
+
+        <!-- SEÇÃO 7: Contato -->
+        <section id="contato" class="tab-content">
+        <h2>Fale comigo</h2>
+        <form action="../backend/processa-contato.php" method="post">
+          <fieldset>
+            <legend>Seus dados</legend>
+
+            <div>
+              <label for="nome">Nome</label>
+              <input type="text" id="nome" name="nome" required>
+            </div>
+
+            <div>
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+
+            <div>
+              <label for="assunto">Assunto</label>
+              <select id="assunto" name="assunto">
+                <option value="duvida">Uma dúvida</option>
+                <option value="trabalho">Uma proposta de trabalho</option>
+                <option value="outro">Outro</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="mensagem">Mensagem</label>
+              <textarea id="mensagem" name="mensagem" rows="5" cols="40" maxlength="500" required></textarea>
+            </div>
+            
+          </fieldset>
+
+          <div>
+            <button type="submit">Enviar</button>
+            <button type="reset">Limpar</button>
+          </div>
+
+          <!--
+            Aula 07, prática 1. O parágrafo nasce VAZIO: quem escreve nele
+            é a function conferirFormulario, do script.js, a cada clique em
+            Enviar. aria-live="polite" faz o leitor de tela ler o aviso
+            assim que ele muda.
+          -->
+          <p id="aviso" class="aviso" aria-live="polite"></p>
+        </form>
+      </section>
+
+        <section id="contato" class="tab-content">
+            <h2>Deixe seu Contato</h2>
+            
+        </section>
+
+
+
+
 
         <!-- Rodapé -->
       <footer class="site-footer">
