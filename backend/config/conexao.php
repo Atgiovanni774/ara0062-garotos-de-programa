@@ -7,3 +7,12 @@
    arquivos de dentro do backend/ vão incluir. Nada de HTML aqui: o backend
    recebe, valida e grava; quem desenha a tela é o frontend.
    =========================================================================== */
+
+
+   $servidor = "localhost";
+   $banco = "fulano";
+   $usuario = "root";
+   $senha = "";
+
+   $conexao = new PDO("mysql:host=$servidor;dbname=$banco;charset=utf8mb4", $usuario, $senha);
+   ?>
