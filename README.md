@@ -86,8 +86,7 @@ Como o index.html está dentro da pasta frontend/, os caminhos relativos utiliza
 | Imagens          | img/foto.jpg                    |
 | Backend          | ../backend/processa-contato.php |
 
----
-
+```
 ## Estrutura
 
 ├─ README.md                  esta folha de rosto
@@ -102,9 +101,12 @@ Como o index.html está dentro da pasta frontend/, os caminhos relativos utiliza
 └─ backend/                   tudo o que roda no servidor
    ├─ config/
    │  └─ conexao.php          conexão com o banco de dados
-   └─ processa-contato.php    processamento do formulário
-
----
+   ├─ sql/
+   │  └─ banco.sql            script de criação do banco e da tabela do projeto
+   ├─ processa-contato.php    processamento do formulário
+   ├─ mensagens.php           lista as mensagens gravadas no banco de dados
+   └─ teste-conexao.php       testa a conexão do PHP com o banco de dados
+```
 
 ## Quem fez o quê
 
@@ -134,4 +136,6 @@ Como o index.html está dentro da pasta frontend/, os caminhos relativos utiliza
 * *HTML5* — estrutura e organização semântica das páginas.
 * *CSS3* — estilização, layout, responsividade e temas visuais.
 * *JavaScript* — interações, navegação entre seções e funcionalidades dinâmicas.
+* *PHP* - processamento no servidor, validação de formulários e integração back-end.
+* *SQL* - criação, estruturação e persistência de dados no banco relacional.
 * *Git/GitHub* — controle de versão e colaboração da equipe.
