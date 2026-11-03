@@ -90,8 +90,6 @@ Como o index.html está dentro da pasta frontend/, os caminhos relativos utiliza
 
 ## Estrutura
 
-text
-.
 ├─ README.md                  esta folha de rosto
 ├─ frontend/                  tudo o que roda no navegador
 │  ├─ index.html              página principal
@@ -105,7 +103,6 @@ text
    ├─ config/
    │  └─ conexao.php          conexão com o banco de dados
    └─ processa-contato.php    processamento do formulário
-
 
 ---
 
@@ -128,7 +125,7 @@ text
 * [x] *Ciclo 3* — frontend/: página com listas, tabela e formulário de contato
 * [x] *Ciclos 4 e 5* — frontend/css/: identidade visual, layout e responsividade
 * [x] *Ciclos 6 e 7* — frontend/js/: interação, validação e dados via JSON
-* [ ] *Ciclos 8 a 10* — backend/: formulário, integração e operações com o banco de dados
+* [x] *Ciclos 8 a 10* — backend/: formulário, integração e operações com o banco de dados
 
 ---
 
