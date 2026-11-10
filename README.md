@@ -94,7 +94,7 @@ O login depende de PHP e MySQL; abrir com Live Server não executa o backend.
 Os estilos ficam exclusivamente nas folhas externas `frontend/css/estilo.css` e `frontend/css/tema-noite.css`.
 
 ## Estrutura
-
+```
 ├─ README.md                  esta folha de rosto
 ├─ frontend/                  tudo o que roda no navegador
 │  ├─ index.html              página única com todas as telas
