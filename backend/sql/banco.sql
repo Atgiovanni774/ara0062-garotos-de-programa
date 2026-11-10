@@ -40,8 +40,10 @@ CREATE TABLE IF NOT EXISTS progresso_curso (
   id_curso INT NOT NULL,
   porcentagem DECIMAL(5,2) NOT NULL DEFAULT 0.00,
   status_progresso ENUM('pendente', 'em_andamento', 'concluido') NOT NULL DEFAULT 'pendente',
+  visualizado_em DATETIME NULL,
   data_inicio DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   data_conclusao DATETIME NULL,
+  UNIQUE KEY uq_progresso_usuario_curso (id_usuario, id_curso),
   FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
   FOREIGN KEY (id_curso) REFERENCES cursos(id_curso)
 );

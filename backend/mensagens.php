@@ -5,7 +5,7 @@ declare(strict_types=1);
 require_once __DIR__ . '/config/auth.php';
 require_once __DIR__ . '/config/conexao.php';
 
-$usuario = exigirPapel(['auxiliar_fiscal', 'supervisor_geral']);
+$usuario = exigirPapel(['supervisor_geral']);
 $metodo = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 
 if ($metodo === 'POST') {
@@ -18,15 +18,12 @@ if ($metodo === 'POST') {
         responderJson(['erro' => 'Atualização inválida.'], 422);
     }
 
-    $filtro = $usuario['papel'] === 'auxiliar_fiscal'
-        ? " AND assunto IN ('sugestao', 'desatualizado')"
-        : '';
-    $verifica = $conexao->prepare('SELECT id FROM mensagens WHERE id = ?' . $filtro);
+    $verifica = $conexao->prepare('SELECT id FROM mensagens WHERE id = ?');
     $verifica->execute([$id]);
     if (!$verifica->fetchColumn()) {
         responderJson(['erro' => 'Solicitação não encontrada ou fora da sua permissão.'], 404);
     }
-    $atualiza = $conexao->prepare('UPDATE mensagens SET status = ? WHERE id = ?' . $filtro);
+    $atualiza = $conexao->prepare('UPDATE mensagens SET status = ? WHERE id = ?');
     $atualiza->execute([$status, $id]);
     responderJson(['mensagem' => 'Solicitação atualizada.']);
 }
@@ -35,9 +32,8 @@ if ($metodo !== 'GET') {
     responderJson(['erro' => 'Método não permitido.'], 405);
 }
 
-if ($usuario['papel'] === 'auxiliar_fiscal') {
-    $consulta = $conexao->query("SELECT id, nome, email, assunto, mensagem, status, criada_em FROM mensagens WHERE assunto IN ('sugestao', 'desatualizado') ORDER BY criada_em DESC");
-} else {
-    $consulta = $conexao->query('SELECT id, nome, email, assunto, mensagem, status, criada_em FROM mensagens ORDER BY criada_em DESC');
+if ($usuario['papel'] !== 'supervisor_geral') {
+    responderJson(['erro' => 'Você não tem permissão para consultar solicitações de conteúdo.'], 403);
 }
+$consulta = $conexao->query('SELECT id, nome, email, assunto, mensagem, status, criada_em FROM mensagens ORDER BY criada_em DESC');
 responderJson(['mensagens' => $consulta->fetchAll(PDO::FETCH_ASSOC)]);

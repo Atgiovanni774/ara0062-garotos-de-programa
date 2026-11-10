@@ -1,194 +1,472 @@
-```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <title>Portal GACO · Conhecimento Operacional</title>
+    <meta name="description" content="Procedimentos, instruções de trabalho, requisitos legais e normas de segurança em um só lugar.">
+    <meta name="theme-color" content="#0e2b25">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/estilo.css">
     <link rel="stylesheet" href="css/tema-noite.css">
-    <title>Garotos de Programa - Portal GACO</title>
+
+    <!-- Aplica o tema salvo antes de pintar a página (evita o "piscar" claro → escuro). -->
+    <script>
+        try {
+            var p = JSON.parse(localStorage.getItem('gaco-prefs') || '{}');
+            var escuro = p.tema === 'escuro' || ((!p.tema || p.tema === 'auto') && matchMedia('(prefers-color-scheme: dark)').matches);
+            var c = document.documentElement.classList;
+            if (escuro) c.add('dark-mode');
+            if (p.texto === 'grande') c.add('texto-grande');
+            if (p.movimento === 'reduzido') c.add('sem-movimento');
+        } catch (e) {}
+    </script>
 </head>
-<body>
+<body class="app">
 
-    <!-- Menu Lateral Único -->
-    <aside>
-        <div class="logo">Portal GACO</div>
-        <nav>
-            <ul>
-                <li><a href="#" onclick="showTab('principal', event)" class="active">Principal / Equipe</a></li>
-                <li><a href="#" onclick="showTab('pesquisa', event)">Pesquisa Rápida</a></li>
-                <li><a href="#" onclick="showTab('procedimentos', event)">Procedimentos</a></li>
-                <li><a href="#" onclick="showTab('treinamentos', event)">Treinamentos</a></li>
-                <li><a href="#" onclick="showTab('relatorios', event)">Relatórios</a></li>
-                <li><a href="#" onclick="showTab('contato', event)">Contato</a></li>
-                <li><a href="#" onclick="showTab('configuracoes', event)">Configurações</a></li>
-            </ul>
-        </nav>
-    </aside>
+    <a class="pular" href="#conteudo">Pular para o conteúdo</a>
 
-    <!-- Área de Conteúdo -->
-    <main>
-        <header>
-            <h1 id="page-title">Painel Principal</h1>
-            <p>Projeto Integrado ARA0062 · Unificado em página única</p>
-        </header>
-
-        <!-- SEÇÃO 1: PRINCIPAL -->
-        <section id="principal" class="tab-content active">
-            <h2>Integrantes e Matrículas</h2>
-            
-            <img src="img/photo-1555066931-4365d14bab8c.avif" alt="Código de programação em tela de computador representando desenvolvimento web" class="project-banner">
-            
-            <p>Trabalho unificado desenvolvido pela equipe Garotos de Programa.</p>
-            
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nome Completo</th>
-                        <th>Matrícula</th>
-                        <th>Papel</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>Arthur Giovanni Lacerda Lisboa</td><td>2026017588233</td><td><strong>Líder</strong></td></tr>
-                    <tr><td>Matheus Tadeu Nunes Vidigal Tiote</td><td>202603302521</td><td>Integrante</td></tr>
-                    <tr><td>Jonata Romano Guimarães</td><td>202603331725</td><td>Integrante</td></tr>
-                    <tr><td>Guilherme Lopes</td><td>202602601851</td><td>Integrante</td></tr>
-                    <tr><td>Felipe Herminio Nunes</td><td>202601592203</td><td>Integrante</td></tr>
-                    <tr><td>Marcos Rodrigues Rosa</td><td>202508373777</td><td>Integrante</td></tr>
-                </tbody>
-            </table>
-        </section>
-
-        <!-- SEÇÃO 2: PESQUISA RÁPIDA -->
-        <section id="pesquisa" class="tab-content">
-            <h2>Pesquisa Rápida</h2>
-            <div class="form-group">
-                <label for="search-input">Pesquisar no sistema:</label>
-                <input type="text" id="search-input" placeholder="Digite o termo desejado...">
-            </div>
-            <button onclick="alert('Funcionalidade de pesquisa simulada com sucesso!')">Buscar</button>
-        </section>
-
-        <!-- SEÇÃO 3: PROCEDIMENTOS -->
-        <section id="procedimentos" class="tab-content">
-            <h2>Procedimentos Operacionais</h2>
-            <div class="card-grid">
-                <div class="card">
-                    <h3>Procedimento 01</h3>
-                    <p>Diretrizes de desenvolvimento web, padronização de HTML5 e organização semântica das tags.</p>
-                </div>
-                <div class="card">
-                    <h3>Procedimento 02</h3>
-                    <p>Fluxo de entrega única e validação de relatórios institucionais via repositório.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- SEÇÃO 4: TREINAMENTOS -->
-        <section id="treinamentos" class="tab-content">
-            <h2>Módulo de Treinamentos</h2>
-            <p>Acompanhe os módulos de capacitação técnica disponíveis para a equipe:</p>
-            <ul class="training-list">
-                <li>Introdução ao Desenvolvimento Web (HTML5 & CSS3)</li>
-                <li>Lógica de Programação e Arquitetura</li>
-                <li>Boas Práticas de Controle de Versão</li>
-            </ul>
-        </section>
-
-        <!-- SEÇÃO 5: RELATÓRIOS -->
-        <section id="relatorios" class="tab-content">
-            <h2>Relatórios de Desempenho</h2>
-            <p>Métricas consolidadas das atividades entregues e status do projeto.</p>
-            <div class="card report-card">
-                <h3>Status Geral: Concluído (100%)</h3>
-                <p>Todas as etapas de integração e documentação foram finalizadas com sucesso.</p>
-            </div>
-        </section>
-
-        <!-- SEÇÃO 6: CONFIGURAÇÕES -->
-        <section id="configuracoes" class="tab-content">
-            <h2>Configurações do Sistema</h2>
-            <div class="form-group">
-                <label for="theme-select">Tema da Interface:</label>
-                <select id="theme-select" onchange="mudarTema()">
-                    <option value="light">Padrão / Claro</option>
-                    <option value="dark">Escuro (Dark Mode)</option>
-                </select>
-            </div>
-        </section>
-
-
-
-
-        <!-- SEÇÃO 7: Contato -->
-        <section id="contato" class="tab-content">
-        <h2>Fale comigo</h2>
-        <form action="../backend/processa-contato.php" method="post">
-            <legend>Seus dados</legend>
-
-            <div>
-              <label for="nome">Nome</label>
-              <input type="text" id="nome" name="nome" required>
-            </div>
-
-            <div>
-              <label for="email">E-mail</label>
-              <input type="email" id="email" name="email" required>
-            </div>
-
-            <div>
-              <label for="assunto">Assunto</label>
-              <select id="assunto" name="assunto">
-                <option value="duvida">Uma dúvida</option>
-                <option value="trabalho">Uma proposta de trabalho</option>
-                <option value="outro">Outro</option>
-              </select>
-            </div>
-
-            <div>
-              <label for="mensagem">Mensagem</label>
-              <textarea id="mensagem" name="mensagem" rows="5" cols="40" maxlength="500" required></textarea>
-            </div>
-
-          <div>
-            <button type="submit">Enviar</button>
-            <button type="reset">Limpar</button>
-          </div>
-
-          <!--
-            Aula 07, prática 1. O parágrafo nasce VAZIO: quem escreve nele
-            é a function conferirFormulario, do script.js, a cada clique em
-            Enviar. aria-live="polite" faz o leitor de tela ler o aviso
-            assim que ele muda.
-          -->
-          <p id="aviso" class="aviso" aria-live="polite"></p>
+    <main class="acesso" id="acesso">
+        <a class="acesso-marca" href="#/inicio">Portal GACO</a>
+        <p class="acesso-selo">Conhecimento operacional, com acesso seguro</p>
+        <h1 id="titulo-acesso">Entre no portal</h1>
+        <p class="acesso-intro">Acesse documentos, treinamentos e solicitações de conteúdo conforme seu perfil.</p>
+        
+        <form class="form-acesso" id="form-entrar" autocomplete="on">
+            <label for="login-email">E-mail</label>
+            <input id="login-email" name="email" type="email" autocomplete="username" required maxlength="190">
+            <label for="login-senha">Senha</label>
+            <input id="login-senha" name="senha" type="password" autocomplete="current-password" required>
+            <button class="btn btn-primario" type="submit">Entrar</button>
         </form>
-      </section>
-
-        <section id="contato" class="tab-content">
-            <h2>Deixe seu Contato</h2>
-            
-        </section>
-
-
-
-
-
-        <!-- Rodapé -->
-      <footer class="site-footer">
-    <div class="footer-content">
-        <p><strong>Enviado pelo líder:</strong> Arthur Giovanni Lacerda Lisboa</p>
-        <p class="footer-note">Entrega única e unificada. A nota é válida para todos os integrantes da equipe.</p>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy; 2026 Equipe Garotos de Programa - ARA0062 · Desenvolvimento Web Integrado.</p>
-    </div>
-</footer>
+        <form class="form-acesso" id="form-registro" hidden autocomplete="on">
+            <label for="registro-nome">Nome completo</label>
+            <input id="registro-nome" name="nome" autocomplete="name" required minlength="3" maxlength="100">
+            <label for="registro-email">E-mail</label>
+            <input id="registro-email" name="email" type="email" autocomplete="email" required maxlength="190">
+            <label for="registro-senha">Senha <span>(mínimo 3 caracteres)</span></label>
+            <input id="registro-senha" name="senha" type="password" autocomplete="new-password" required minlength="3">
+            <label for="registro-papel">Tipo de conta</label>
+            <select id="registro-papel" name="papel" required>
+                <option value="Auxiliar de Logística">Auxiliar de Logística</option>
+                <option value="Auxiliar Fiscal">Auxiliar Fiscal</option>
+                <option value="Supervisor Geral">Supervisor Geral</option>
+            </select>
+            <p class="aviso-perfil">Cadastros de Supervisor Geral e Auxiliar Fiscal precisam de aprovação de um supervisor_geral.</p>
+            <button class="btn btn-primario" type="submit">Solicitar cadastro</button>
+        </form>
+        <p class="mensagem-acesso" id="mensagem-acesso" role="status" aria-live="polite"></p>
+        <p class="acesso-rodape">As permissões são verificadas no servidor. Não compartilhe sua senha.</p>
     </main>
 
+    <!-- Ícones (sprite). Usados com <use href="#i-nome">. -->
+    <svg class="sprite-icones" width="0" height="0" aria-hidden="true" focusable="false">
+        <defs>
+            <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+            <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></symbol>
+            <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4h6a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H4z"/><path d="M20 4h-6a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h7z"/></symbol>
+            <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7"/><path d="M12 17h.01"/></symbol>
+            <symbol id="i-grad" viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5"/></symbol>
+            <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></symbol>
+            <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+            <symbol id="i-settings" viewBox="0 0 24 24"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></symbol>
+            <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5c2 .6 3.5 2.4 3.5 5.5"/></symbol>
+            <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></symbol>
+            <symbol id="i-star-fill" viewBox="0 0 24 24"><path fill="currentColor" d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></symbol>
+            <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></symbol>
+            <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></symbol>
+            <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+            <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+            <symbol id="i-print" viewBox="0 0 24 24"><path d="M7 9V3h10v6"/><rect x="4" y="9" width="16" height="8" rx="2"/><path d="M7 14h10v7H7z"/></symbol>
+            <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></symbol>
+            <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+            <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3 2 20h20z"/><path d="M12 10v4M12 17h.01"/></symbol>
+            <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+            <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+            <symbol id="i-file" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></symbol>
+            <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.5 3.2 7.6 8 9 4.8-1.4 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+            <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 4v16M6 20h12M5 7h14"/><path d="M5 7l-3 7a3.5 3.5 0 0 0 6 0zM19 7l-3 7a3.5 3.5 0 0 0 6 0z"/></symbol>
+            <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/></symbol>
+            <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3 3 8l9 5 9-5z"/><path d="m3 13 9 5 9-5"/></symbol>
+            <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></symbol>
+            <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></symbol>
+        </defs>
+    </svg>
+
+    <!-- ============ Menu lateral ============ -->
+    <aside id="menu" class="lateral" aria-label="Menu principal" hidden>
+        <a class="marca" href="#/inicio" aria-label="Portal GACO, ir para o início">
+            <svg class="marca-simbolo" viewBox="0 0 40 40" aria-hidden="true">
+                <rect width="40" height="40" rx="9" fill="currentColor" opacity=".14"/>
+                <path d="M6 31 15 12l6 11 4-7 9 15z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+            </svg>
+            <span class="marca-texto">
+                <strong>Portal GACO</strong>
+                <small>Gestão e Acesso ao Conhecimento Operacional</small>
+            </span>
+        </a>
+
+        <nav aria-label="Seções">
+            <ul>
+                <li><a href="#/inicio" data-rota="inicio"><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg>Início</a></li>
+                <li><a href="#/biblioteca" data-rota="biblioteca"><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg>Biblioteca</a></li>
+                <li><a href="#/perguntas" data-rota="perguntas"><svg class="ic" aria-hidden="true"><use href="#i-help"/></svg>Dúvidas rápidas</a></li>
+                <li><a href="#/treinamentos" data-rota="treinamentos"><svg class="ic" aria-hidden="true"><use href="#i-grad"/></svg>Treinamentos</a></li>
+                <li data-perfil="supervisor_geral"><a href="#/relatorios" data-rota="relatorios"><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg>Relatórios</a></li>
+                <li data-perfil="supervisor_geral"><a href="#/conteudos" data-rota="conteudos"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>Solicitações de conteúdo</a></li>
+                <li data-perfil="supervisor_geral"><a href="#/usuarios" data-rota="usuarios"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg>Usuários e permissões</a></li>
+                <li><a href="#/contato" data-rota="contato"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>Contato</a></li>
+            </ul>
+            <ul class="nav-fim">
+                <li><a href="#/equipe" data-rota="equipe"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg>Equipe e desafio</a></li>
+                <li><a href="#/configuracoes" data-rota="configuracoes"><svg class="ic" aria-hidden="true"><use href="#i-settings"/></svg>Configurações</a></li>
+            </ul>
+        </nav>
+
+        <p class="lateral-nota">Protótipo com conteúdo de demonstração. Os documentos devem ser substituídos pelos oficiais.</p>
+    </aside>
+    <div class="veu" id="veu" hidden></div>
+
+    <div class="principal" id="aplicacao" hidden>
+        <!-- ============ Barra superior ============ -->
+        <header class="topbar">
+            <button type="button" class="btn-icone btn-menu" id="btn-menu" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+                <svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg>
+            </button>
+
+            <form class="busca-global" id="form-busca" role="search" autocomplete="off">
+                <label class="sr-only" for="busca-global">Buscar documentos</label>
+                <svg class="ic busca-ic" aria-hidden="true"><use href="#i-search"/></svg>
+                <input type="search" id="busca-global" placeholder="Buscar documentos"
+                       role="combobox" aria-expanded="false" aria-controls="sugestoes" aria-autocomplete="list" enterkeyhint="search">
+                <kbd class="atalho" aria-hidden="true">/</kbd>
+                <ul id="sugestoes" class="sugestoes" role="listbox" aria-label="Sugestões" hidden></ul>
+            </form>
+
+            <button type="button" class="btn-icone" id="btn-tema" aria-label="Alternar tema claro e escuro">
+                <svg class="ic" aria-hidden="true"><use href="#i-moon"/></svg>
+            </button>
+            <div class="usuario-topo"><span id="usuario-identidade"></span><button type="button" class="btn btn-texto" id="btn-sair">Sair</button></div>
+        </header>
+
+        <main id="conteudo" tabindex="-1">
+
+            <!-- ============ INÍCIO ============ -->
+            <section id="sec-inicio" class="tela" data-titulo="Início" hidden>
+                <div class="hero">
+                    <h1>Encontre o procedimento certo na hora certa.</h1>
+                    <p class="hero-sub">Procedimentos, instruções de trabalho, requisitos legais e normas de segurança da operação, num só lugar e sempre na versão vigente.</p>
+                    <form class="hero-busca" id="form-hero" role="search">
+                        <label class="sr-only" for="hero-q">O que você precisa fazer agora?</label>
+                        <svg class="ic" aria-hidden="true"><use href="#i-search"/></svg>
+                        <input type="search" id="hero-q" placeholder="O que você vai fazer agora?" autocomplete="off">
+                        <button type="submit" class="btn btn-claro">Buscar</button>
+                    </form>
+                    <p class="hero-chips-rot" id="hero-chips-rot">Buscas frequentes:</p>
+                    <div class="hero-chips" id="hero-chips" aria-labelledby="hero-chips-rot"></div>
+                </div>
+
+                <div class="kpis" id="kpis-inicio"></div>
+
+                <div class="grid-2">
+                    <section class="painel" aria-labelledby="t-duvidas">
+                        <div class="painel-cab">
+                            <h2 id="t-duvidas">Dúvidas do dia a dia</h2>
+                            <a class="link-seta" href="#/perguntas">Ver todas <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                        </div>
+                        <ul class="lista-atalhos" id="inicio-perguntas"></ul>
+                    </section>
+                    <section class="painel" aria-labelledby="t-recentes">
+                        <div class="painel-cab">
+                            <h2 id="t-recentes">Atualizados recentemente</h2>
+                            <a class="link-seta" href="#/biblioteca?ordem=recentes">Ver biblioteca <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                        </div>
+                        <ul class="lista-docs" id="inicio-recentes"></ul>
+                    </section>
+                </div>
+
+                <section class="painel" aria-labelledby="t-tipos">
+                    <div class="painel-cab"><h2 id="t-tipos">Explorar por tipo</h2></div>
+                    <div class="tiles" id="inicio-tipos"></div>
+                </section>
+
+                <section class="painel" aria-labelledby="t-favoritos">
+                    <div class="painel-cab"><h2 id="t-favoritos">Meus favoritos</h2></div>
+                    <div id="inicio-favoritos"></div>
+                </section>
+            </section>
+
+            <!-- ============ BIBLIOTECA ============ -->
+            <section id="sec-biblioteca" class="tela" data-titulo="Biblioteca" hidden>
+                <header class="tela-cab">
+                    <h1>Biblioteca</h1>
+                    <p>Pesquise por palavra, código ou norma. A busca ignora acentos e aceita plural.</p>
+                </header>
+
+                <form class="painel filtros" id="form-bib" role="search">
+                    <div class="campo-busca">
+                        <svg class="ic" aria-hidden="true"><use href="#i-search"/></svg>
+                        <label class="sr-only" for="bib-q">Buscar na biblioteca</label>
+                        <input type="search" id="bib-q" placeholder="Ex.: reformável, NR-35, devolução, EPI" autocomplete="off">
+                    </div>
+
+                    <div class="chips-tipo" id="bib-tipos" role="group" aria-label="Filtrar por tipo de documento"></div>
+
+                    <div class="filtros-linha">
+                        <div class="campo">
+                            <label for="bib-area">Área</label>
+                            <select id="bib-area"></select>
+                        </div>
+                        <div class="campo">
+                            <label for="bib-ordem">Ordenar por</label>
+                            <select id="bib-ordem">
+                                <option value="relevancia">Mais relevantes</option>
+                                <option value="recentes">Atualizados recentemente</option>
+                                <option value="populares">Mais consultados</option>
+                                <option value="revisao">Revisão mais urgente</option>
+                                <option value="az">Ordem alfabética</option>
+                            </select>
+                        </div>
+                        <label class="check-simples" for="bib-fav">
+                            <input type="checkbox" id="bib-fav">
+                            <span>Só favoritos</span>
+                        </label>
+                        <button type="button" class="btn btn-texto" id="bib-limpar">Limpar filtros</button>
+                    </div>
+                </form>
+
+                <p id="bib-contagem" class="contagem" aria-live="polite"></p>
+                <div id="bib-resultados" class="grid-docs"></div>
+            </section>
+
+            <!-- ============ DÚVIDAS RÁPIDAS ============ -->
+            <section id="sec-perguntas" class="tela" data-titulo="Dúvidas rápidas" hidden>
+                <header class="tela-cab">
+                    <h1>Dúvidas rápidas</h1>
+                    <p>As perguntas que mais chegam aos colegas mais experientes, já respondidas, com o documento completo logo abaixo.</p>
+                </header>
+                <div id="lista-perguntas" class="faq-lista"></div>
+            </section>
+
+            <!-- ============ TREINAMENTOS ============ -->
+            <section id="sec-treinamentos" class="tela" data-titulo="Treinamentos" hidden>
+                <header class="tela-cab">
+                    <h1>Treinamentos</h1>
+                    <p>Cursos disponíveis conforme o seu setor. Visualizações e conclusões são salvas por usuário no sistema. O supervisor geral pode consultar cursos de todos os setores.</p>
+                </header>
+                <div id="lista-cursos" class="trilhas"></div>
+            </section>
+
+            <!-- ============ RELATÓRIOS ============ -->
+            <section id="sec-relatorios" class="tela" data-titulo="Relatórios" hidden>
+                <header class="tela-cab tela-cab-acao">
+                    <div>
+                        <h1>Relatórios</h1>
+                        <p>Como está a saúde da base de conhecimento: o que está em dia, o que está pendente e o que as pessoas procuram e não encontram.</p>
+                    </div>
+                    <button type="button" class="btn btn-secundario" id="btn-csv">
+                        <svg class="ic" aria-hidden="true"><use href="#i-download"/></svg>Exportar lista (CSV)
+                    </button>
+                </header>
+                <div class="kpis" id="kpis-rel"></div>
+                <div class="grid-2" id="graficos-rel"></div>
+                <section class="painel" aria-labelledby="t-pend">
+                    <div class="painel-cab"><h2 id="t-pend">Revisões pendentes e próximas</h2></div>
+                    <div id="rel-pendencias"></div>
+                </section>
+                <section class="painel" aria-labelledby="t-lacunas">
+                    <div class="painel-cab"><h2 id="t-lacunas">Buscas sem resultado</h2></div>
+                    <div id="rel-lacunas"></div>
+                </section>
+            </section>
+
+            <!-- ============ CONTATO ============ -->
+            <section id="sec-contato" class="tela" data-titulo="Contato" hidden>
+                <header class="tela-cab">
+                    <h1>Contato</h1>
+                    <p>Não achou o que procurava ou viu algo desatualizado? Conte para a equipe do portal.</p>
+                </header>
+
+                <div class="grid-contato">
+                    <form class="painel form" id="form-contato" action="../backend/processa-contato.php" method="post">
+                        <div class="campo">
+                            <label for="nome">Nome</label>
+                            <input type="text" id="nome" name="nome" required autocomplete="name">
+                        </div>
+
+                        <div class="campo">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" required autocomplete="email">
+                        </div>
+
+                        <div class="campo">
+                            <label for="assunto">Assunto</label>
+                            <select id="assunto" name="assunto">
+                                <option value="duvida">Tenho uma dúvida</option>
+                                <option value="sugestao">Sugerir um documento novo</option>
+                                <option value="desatualizado">Avisar que um documento está desatualizado</option>
+                                <option value="outro">Outro assunto</option>
+                            </select>
+                        </div>
+
+                        <div class="campo" id="campo-doc" hidden>
+                            <label for="doc-rel">Documento relacionado <span class="opcional">(opcional)</span></label>
+                            <select id="doc-rel"></select>
+                        </div>
+
+                        <div class="campo">
+                            <label for="mensagem">Mensagem</label>
+                            <textarea id="mensagem" name="mensagem" rows="6" maxlength="500" required></textarea>
+                            <p id="contador" class="contador" aria-live="off">Restam 500 caracteres</p>
+                        </div>
+
+                        <div class="form-acoes">
+                            <button type="submit" class="btn btn-primario">Enviar mensagem</button>
+                            <button type="reset" class="btn btn-texto">Limpar</button>
+                        </div>
+
+                        <p id="aviso" class="aviso" aria-live="polite"></p>
+                    </form>
+
+                    <aside class="painel nota-lateral">
+                        <h2>O que acontece depois</h2>
+                        <ol class="passos-simples">
+                            <li>Sua mensagem é guardada no banco de dados do portal.</li>
+                            <li>A equipe de Gestão do Conhecimento analisa e responde pelo e-mail informado.</li>
+                            <li>Se for uma sugestão aprovada, o documento entra na biblioteca com um responsável e uma data de revisão.</li>
+                        </ol>
+                    </aside>
+                </div>
+            </section>
+
+            <!-- ============ SOLICITAÇÕES DE CONTEÚDO ============ -->
+            <section id="sec-conteudos" class="tela" data-titulo="Solicitações de conteúdo" hidden>
+                <header class="tela-cab">
+                    <h1>Solicitações de conteúdo</h1>
+                    <p>Analise sugestões e avisos de documentos desatualizados enviados pelos colaboradores.</p>
+                </header>
+                <div id="lista-conteudos" class="lista-solicitacoes"></div>
+            </section>
+
+            <!-- ============ USUÁRIOS ============ -->
+            <section id="sec-usuarios" class="tela" data-titulo="Usuários e permissões" hidden>
+                <header class="tela-cab">
+                    <h1>Usuários e permissões</h1>
+                    <p>Ative contas pendentes, atribua papéis e bloqueie acessos. Mantenha pelo menos um supervisor_geral ativo.</p>
+                </header>
+                <div id="lista-usuarios" class="lista-usuarios" aria-live="polite"></div>
+            </section>
+
+            <!-- ============ EQUIPE E DESAFIO ============ -->
+            <section id="sec-equipe" class="tela" data-titulo="Equipe e desafio" hidden>
+                <header class="tela-cab">
+                    <h1>Equipe e desafio</h1>
+                    <p>Projeto Integrado ARA0062 · Equipe Garotos de Programa · Newton Paiva 2026/2</p>
+                </header>
+
+                <img src="img/photo-1555066931-4365d14bab8c.avif" alt="Código de programação em uma tela de computador" class="banner" width="1200" height="260">
+
+                <section class="painel" aria-labelledby="t-desafio">
+                    <div class="painel-cab"><h2 id="t-desafio">O desafio</h2></div>
+                    <p class="texto-leitura"><strong>Preservação e acesso ao conhecimento operacional crítico.</strong> Na Anglo American, boa parte do conhecimento sobre procedimentos, instruções de trabalho, requisitos legais e normas de segurança está concentrada nos profissionais mais experientes. Isso dificulta a padronização, deixa o treinamento de novatos mais lento e aumenta o risco de erro quando a informação certa não é encontrada no momento certo.</p>
+                    <p class="texto-leitura"><em>Como garantir que o conhecimento operacional crítico esteja acessível, atualizado e de fácil consulta para todos os colaboradores, reduzindo a dependência exclusiva dos mais experientes?</em></p>
+                    <p class="fonte-desafio">SAGA SENAI de Inovação · SENAI Conceição do Mato Dentro · Área: Tecnologia da Informação · Vigência: 18/06/2026 a 18/06/2027</p>
+                </section>
+
+                <section class="painel" aria-labelledby="t-causas">
+                    <div class="painel-cab"><h2 id="t-causas">Causa do problema e resposta do portal</h2></div>
+                    <div class="tabela-rolagem">
+                        <table class="tabela">
+                            <thead><tr><th scope="col">Causa identificada</th><th scope="col">Como o portal responde</th></tr></thead>
+                            <tbody>
+                                <tr><th scope="row">Conhecimento concentrado nos mais experientes</th><td>Biblioteca central com passo a passo, cuidados e referências, e a seção Dúvidas rápidas com as perguntas que mais chegam aos veteranos.</td></tr>
+                                <tr><th scope="row">Informação difícil de achar na hora certa</th><td>Busca em todas as telas, com sugestões enquanto digita, tolerância a acento e plural, filtros por tipo e área e atalho de teclado.</td></tr>
+                                <tr><th scope="row">Treinamento lento de novos colaboradores</th><td>Cursos do banco exibidos conforme o setor de cada colaborador; o supervisor geral consulta cursos de todos os setores.</td></tr>
+                                <tr><th scope="row">Risco de erro e não conformidade</th><td>Cuidados de segurança e requisitos legais em destaque em cada documento, com confirmação de leitura por versão.</td></tr>
+                                <tr><th scope="row">Documentos desatualizados</th><td>Versão, data e prazo de revisão em cada documento, com alerta de revisão vencida e relatório de pendências.</td></tr>
+                                <tr><th scope="row">Dúvidas que ninguém registra</th><td>As buscas sem resultado viram uma lista de lacunas que a equipe pode transformar em documentos novos.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="painel" aria-labelledby="t-time">
+                    <div class="painel-cab"><h2 id="t-time">Integrantes</h2></div>
+                    <div class="tabela-rolagem">
+                        <table class="tabela">
+                            <thead><tr><th scope="col">Nome completo</th><th scope="col">Matrícula</th><th scope="col">Responsabilidade</th></tr></thead>
+                            <tbody>
+                                <tr><th scope="row">Arthur Giovanni Lacerda Lisboa</th><td>2026017588233</td><td><strong>Líder</strong>: liderança e organização do projeto</td></tr>
+                                <tr><th scope="row">Matheus Tadeu Nunes Vidigal Tiote</th><td>202603302521</td><td>Cabeçalho e navegação</td></tr>
+                                <tr><th scope="row">Jonata Romano Guimarães</th><td>202603331725</td><td>Tipografia</td></tr>
+                                <tr><th scope="row">Guilherme Lopes Gomes</th><td>202602601851</td><td>HTML body</td></tr>
+                                <tr><th scope="row">Felipe Herminio Nunes</th><td>202601592203</td><td>Tabelas</td></tr>
+                                <tr><th scope="row">Marcos Rodrigues Rosa</th><td>202508373777</td><td>Formulários</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </section>
+
+            <!-- ============ CONFIGURAÇÕES ============ -->
+            <section id="sec-configuracoes" class="tela" data-titulo="Configurações" hidden>
+                <header class="tela-cab">
+                    <h1>Configurações</h1>
+                    <p>Ajuste a aparência do portal. As escolhas ficam salvas neste navegador.</p>
+                </header>
+
+                <div class="painel form form-config">
+                    <fieldset>
+                        <legend>Tema</legend>
+                        <div class="opcoes">
+                            <label class="opcao"><input type="radio" name="tema" value="auto"> <span>Automático (segue o aparelho)</span></label>
+                            <label class="opcao"><input type="radio" name="tema" value="claro"> <span>Claro</span></label>
+                            <label class="opcao"><input type="radio" name="tema" value="escuro"> <span>Escuro</span></label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Tamanho do texto</legend>
+                        <div class="opcoes">
+                            <label class="opcao"><input type="radio" name="texto" value="normal"> <span>Normal</span></label>
+                            <label class="opcao"><input type="radio" name="texto" value="grande"> <span>Grande</span></label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Movimento</legend>
+                        <label class="opcao"><input type="checkbox" id="cfg-movimento"> <span>Reduzir animações</span></label>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Dados salvos neste navegador</legend>
+                        <p class="ajuda">Favoritos, leituras confirmadas, progresso dos treinamentos e buscas sem resultado.</p>
+                        <button type="button" class="btn btn-perigo" id="btn-limpar-dados">
+                            <svg class="ic" aria-hidden="true"><use href="#i-trash"/></svg>Apagar dados salvos
+                        </button>
+                    </fieldset>
+                </div>
+            </section>
+        </main>
+
+        <footer class="rodape">
+            <p><strong>Enviado pelo líder:</strong> Arthur Giovanni Lacerda Lisboa</p>
+            <p>Entrega única e unificada. A nota é válida para todos os integrantes da equipe.</p>
+            <p class="rodape-fim">&copy; 2026 Equipe Garotos de Programa. ARA0062, Desenvolvimento Web Integrado.</p>
+        </footer>
+    </div>
+
+    <!-- ============ Ficha do documento ============ -->
+    <dialog id="dlg-doc" class="dlg-doc" aria-labelledby="dlg-titulo">
+        <div id="dlg-conteudo"></div>
+    </dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="js/dados.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
-```

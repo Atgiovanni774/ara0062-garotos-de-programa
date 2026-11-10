@@ -1,17 +1,45 @@
-:root.dark-mode {
-  --primary: #17191f;
-  --secondary: #60a5fa;
-  --accent: #242830;
-  --text: #e5e7eb;
-  --border: #363a43;
-  --bg-body: #111318;
-  --bg-card: #1b1e25;
-  --th-bg: #20242c;
-  --card-hover: #2a2f39;
+/* ===========================================================================
+   Segundo tema: modo escuro
+   Só redefine as variáveis do :root. É ativado pela classe "dark-mode" no
+   <html> (Configurações, botão da barra superior ou preferência do aparelho).
+   =========================================================================== */
 
-  /* Variáveis do Rodapé para o Modo Escuro */
-  --footer-bg: #16181d;
-  --footer-text: #e5e7eb;
-  --footer-note: #9ca3af;
-  --footer-border: #363a43;
+:root.dark-mode {
+    --principal: #4cc3a0;
+    --principal-forte: #7ad9bc;
+    --sobre-principal: #062a21;
+    --fundo: #0c1411;
+    --superficie: #141e1a;
+    --superficie-2: #1a2723;
+    --texto: #e5eee9;
+    --texto-fraco: #9db1a8;
+    --borda: #28392f;
+    --foco: #6cb6ff;
+
+    --nav-bg: #08100d;
+    --nav-texto: #a5bcb3;
+    --nav-ativo: rgba(255, 255, 255, .08);
+
+    --alerta: #f0a064;
+    --alerta-bg: #2b1e14;
+    --ok: #6fd6a8;
+    --ok-bg: #163126;
+    --perigo: #ff8a80;
+    --perigo-bg: #351c1a;
+
+    --cat-proc: #4cc3a0;   --cat-proc-bg: #1b3a31;   --cat-proc-tx: #94e0c8;
+    --cat-inst: #58a8e6;   --cat-inst-bg: #182f44;   --cat-inst-tx: #a3d0f3;
+    --cat-legal: #a58be6;  --cat-legal-bg: #2a2342;  --cat-legal-tx: #cbbcf3;
+    --cat-seg: #f08a3c;    --cat-seg-bg: #402616;    --cat-seg-tx: #f8bb8a;
+
+    --sombra: 0 1px 2px rgba(0, 0, 0, .4), 0 8px 24px rgba(0, 0, 0, .25);
+    color-scheme: dark;
 }
+
+:root.dark-mode .chip[aria-pressed="true"],
+:root.dark-mode .passos li::before { color: #08130f; }
+:root.dark-mode .chip[aria-pressed="true"] .ic,
+:root.dark-mode .chip[aria-pressed="true"] .n { color: #08130f; }
+:root.dark-mode .btn-fav[aria-pressed="true"] { color: #f2c14e; }
+:root.dark-mode .btn-fav-dlg[aria-pressed="true"] { color: #f2c14e; }
+:root.dark-mode .toast { background: #e5eee9; color: #0c1411; }
