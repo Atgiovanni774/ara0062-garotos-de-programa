@@ -3,12 +3,13 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/config/auth.php';
-require_once __DIR__ . '/config/conexao.php';
-require_once __DIR__ . '/config/cursos.php';
 
 iniciarSessaoSegura();
 
 try {
+    require_once __DIR__ . '/config/conexao.php';
+    require_once __DIR__ . '/config/cursos.php';
+
     $metodo = $_SERVER['REQUEST_METHOD'] ?? 'GET';
     if (!in_array($metodo, ['GET', 'POST'], true)) {
         header('Allow: GET, POST');

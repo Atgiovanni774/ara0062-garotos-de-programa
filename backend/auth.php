@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/config/auth.php';
-require_once __DIR__ . '/config/conexao.php';
 iniciarSessaoSegura();
 
 $acao = $_GET['acao'] ?? '';
@@ -14,6 +13,8 @@ $entrada = is_array($entrada) ? $entrada : [];
 $papeis = ['auxiliar_de_logística', 'supervisor_geral', 'auxiliar_fiscal'];
 
 try {
+    require_once __DIR__ . '/config/conexao.php';
+
     if ($metodo === 'GET' && $acao === 'sessao') {
         $usuario = usuarioAtual();
         $_SESSION['csrf'] = $_SESSION['csrf'] ?? bin2hex(random_bytes(32));

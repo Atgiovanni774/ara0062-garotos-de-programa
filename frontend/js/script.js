@@ -67,7 +67,7 @@
     if (estado.csrf) headers['X-CSRF-Token'] = estado.csrf;
     const resposta = await fetch(url, Object.assign({ credentials: 'same-origin' }, opcoes, { headers }));
     let dados;
-    try { dados = await resposta.json(); } catch { throw new Error('Resposta inválida do servidor.'); }
+    try { dados = await resposta.json(); } catch { throw new Error(''); }
     if (!resposta.ok) throw new Error(dados.erro || 'Não foi possível concluir a operação.');
     return dados;
   }
