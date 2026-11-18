@@ -146,7 +146,7 @@ Favoritos, leituras confirmadas, progresso dos treinamentos e buscas sem resulta
 
 | Integrante                            |  Principais Responsabilidade       | Matrícula                          | Usuário GitHub                     | 
 | ------------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| *Arthur Giovanni Lacerda Lisboa*      | Liderança e organização do projeto |                                    |                                    |
+| *Arthur Giovanni Lacerda Lisboa*      | Liderança e organização do projeto | 202601758233                       | @Atgiovanni774                     |
 | *Jonata Romano Guimarães*             | Criação e integração Banco de Dados| 202603331725                       | @JonataRomano                      |
 | *Guilherme Lopes Gomes*               | HTML Body                          |                                    |                                    |
 | *Matheus Tadeu Nunes Vidigal Tiote*   | Cabeçalho e Navegação              |                                    |                                    |
