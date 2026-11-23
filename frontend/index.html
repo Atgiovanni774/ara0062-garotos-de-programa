@@ -12,18 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/estilo.css">
     <link rel="stylesheet" href="css/tema-noite.css">
-
-    <!-- Aplica o tema salvo antes de pintar a página (evita o "piscar" claro → escuro). -->
-    <script>
-        try {
-            var p = JSON.parse(localStorage.getItem('gaco-prefs') || '{}');
-            var escuro = p.tema === 'escuro' || ((!p.tema || p.tema === 'auto') && matchMedia('(prefers-color-scheme: dark)').matches);
-            var c = document.documentElement.classList;
-            if (escuro) c.add('dark-mode');
-            if (p.texto === 'grande') c.add('texto-grande');
-            if (p.movimento === 'reduzido') c.add('sem-movimento');
-        } catch (e) {}
-    </script>
+    <script src="js/tema-inicial.js"></script>
 </head>
 <body class="app">
 
@@ -34,7 +23,7 @@
         <p class="acesso-selo">Conhecimento operacional, com acesso seguro</p>
         <h1 id="titulo-acesso">Entre no portal</h1>
         <p class="acesso-intro">Acesse documentos, treinamentos e solicitações de conteúdo conforme seu perfil.</p>
-        
+
         <form class="form-acesso" id="form-entrar" autocomplete="on">
             <label for="login-email">E-mail</label>
             <input id="login-email" name="email" type="email" autocomplete="username" required maxlength="190">
@@ -62,7 +51,7 @@
         <p class="acesso-rodape">As permissões são verificadas no servidor. Não compartilhe sua senha.</p>
     </main>
 
-    <!-- Ícones (sprite). Usados com <use href="#i-nome">. -->
+
     <svg class="sprite-icones" width="0" height="0" aria-hidden="true" focusable="false">
         <defs>
             <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
@@ -96,7 +85,7 @@
         </defs>
     </svg>
 
-    <!-- ============ Menu lateral ============ -->
+
     <aside id="menu" class="lateral" aria-label="Menu principal" hidden>
         <a class="marca" href="#/inicio" aria-label="Portal GACO, ir para o início">
             <svg class="marca-simbolo" viewBox="0 0 40 40" aria-hidden="true">
@@ -131,7 +120,7 @@
     <div class="veu" id="veu" hidden></div>
 
     <div class="principal" id="aplicacao" hidden>
-        <!-- ============ Barra superior ============ -->
+
         <header class="topbar">
             <button type="button" class="btn-icone btn-menu" id="btn-menu" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
                 <svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg>
@@ -154,7 +143,7 @@
 
         <main id="conteudo" tabindex="-1">
 
-            <!-- ============ INÍCIO ============ -->
+
             <section id="sec-inicio" class="tela" data-titulo="Início" hidden>
                 <div class="hero">
                     <h1>Encontre o procedimento certo na hora certa.</h1>
@@ -199,7 +188,7 @@
                 </section>
             </section>
 
-            <!-- ============ BIBLIOTECA ============ -->
+
             <section id="sec-biblioteca" class="tela" data-titulo="Biblioteca" hidden>
                 <header class="tela-cab">
                     <h1>Biblioteca</h1>
@@ -242,7 +231,7 @@
                 <div id="bib-resultados" class="grid-docs"></div>
             </section>
 
-            <!-- ============ DÚVIDAS RÁPIDAS ============ -->
+
             <section id="sec-perguntas" class="tela" data-titulo="Dúvidas rápidas" hidden>
                 <header class="tela-cab">
                     <h1>Dúvidas rápidas</h1>
@@ -251,7 +240,7 @@
                 <div id="lista-perguntas" class="faq-lista"></div>
             </section>
 
-            <!-- ============ TREINAMENTOS ============ -->
+
             <section id="sec-treinamentos" class="tela" data-titulo="Treinamentos" hidden>
                 <header class="tela-cab">
                     <h1>Treinamentos</h1>
@@ -260,7 +249,7 @@
                 <div id="lista-cursos" class="trilhas"></div>
             </section>
 
-            <!-- ============ RELATÓRIOS ============ -->
+
             <section id="sec-relatorios" class="tela" data-titulo="Relatórios" hidden>
                 <header class="tela-cab tela-cab-acao">
                     <div>
@@ -283,7 +272,7 @@
                 </section>
             </section>
 
-            <!-- ============ CONTATO ============ -->
+
             <section id="sec-contato" class="tela" data-titulo="Contato" hidden>
                 <header class="tela-cab">
                     <h1>Contato</h1>
@@ -291,15 +280,17 @@
                 </header>
 
                 <div class="grid-contato">
-                    <form class="painel form" id="form-contato" action="../backend/processa-contato.php" method="post">
+                    <form class="painel form" id="form-contato" action="../backend/processa-contato.php" method="post" novalidate>
                         <div class="campo">
                             <label for="nome">Nome</label>
-                            <input type="text" id="nome" name="nome" required autocomplete="name">
+                            <input type="text" id="nome" name="nome" required maxlength="60" autocomplete="name" aria-describedby="erro-nome">
+                            <p class="erro-campo" id="erro-nome" role="alert" hidden></p>
                         </div>
 
                         <div class="campo">
                             <label for="email">E-mail</label>
-                            <input type="email" id="email" name="email" required autocomplete="email">
+                            <input type="email" id="email" name="email" required maxlength="120" autocomplete="email" aria-describedby="erro-email">
+                            <p class="erro-campo" id="erro-email" role="alert" hidden></p>
                         </div>
 
                         <div class="campo">
@@ -319,8 +310,9 @@
 
                         <div class="campo">
                             <label for="mensagem">Mensagem</label>
-                            <textarea id="mensagem" name="mensagem" rows="6" maxlength="500" required></textarea>
+                            <textarea id="mensagem" name="mensagem" rows="6" maxlength="500" required aria-describedby="contador erro-mensagem"></textarea>
                             <p id="contador" class="contador" aria-live="off">Restam 500 caracteres</p>
+                            <p class="erro-campo" id="erro-mensagem" role="alert" hidden></p>
                         </div>
 
                         <div class="form-acoes">
@@ -342,7 +334,7 @@
                 </div>
             </section>
 
-            <!-- ============ SOLICITAÇÕES DE CONTEÚDO ============ -->
+
             <section id="sec-conteudos" class="tela" data-titulo="Solicitações de conteúdo" hidden>
                 <header class="tela-cab">
                     <h1>Solicitações de conteúdo</h1>
@@ -351,7 +343,7 @@
                 <div id="lista-conteudos" class="lista-solicitacoes"></div>
             </section>
 
-            <!-- ============ USUÁRIOS ============ -->
+
             <section id="sec-usuarios" class="tela" data-titulo="Usuários e permissões" hidden>
                 <header class="tela-cab">
                     <h1>Usuários e permissões</h1>
@@ -360,7 +352,7 @@
                 <div id="lista-usuarios" class="lista-usuarios" aria-live="polite"></div>
             </section>
 
-            <!-- ============ EQUIPE E DESAFIO ============ -->
+
             <section id="sec-equipe" class="tela" data-titulo="Equipe e desafio" hidden>
                 <header class="tela-cab">
                     <h1>Equipe e desafio</h1>
@@ -411,7 +403,7 @@
                 </section>
             </section>
 
-            <!-- ============ CONFIGURAÇÕES ============ -->
+
             <section id="sec-configuracoes" class="tela" data-titulo="Configurações" hidden>
                 <header class="tela-cab">
                     <h1>Configurações</h1>
@@ -459,7 +451,7 @@
         </footer>
     </div>
 
-    <!-- ============ Ficha do documento ============ -->
+
     <dialog id="dlg-doc" class="dlg-doc" aria-labelledby="dlg-titulo">
         <div id="dlg-conteudo"></div>
     </dialog>

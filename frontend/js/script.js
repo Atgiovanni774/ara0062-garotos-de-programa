@@ -1,12 +1,12 @@
-/* ===========================================================================
-   Portal GACO: comportamento da página
-   Depende de dados.js (TIPOS, AREAS, DOCUMENTOS, PERGUNTAS, API).
-   Organização: utilidades → estado → busca → telas → ficha → eventos → início
-   =========================================================================== */
+
+
+
+
+
 (() => {
   'use strict';
 
-  /* ---------- utilidades ---------- */
+
   const $ = (sel, raiz = document) => raiz.querySelector(sel);
   const $$ = (sel, raiz = document) => Array.from(raiz.querySelectorAll(sel));
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -22,24 +22,24 @@
       try { const v = localStorage.getItem('gaco-' + chave); return v === null ? padrao : JSON.parse(v); } catch { return padrao; }
     },
     gravar(chave, valor) {
-      try { localStorage.setItem('gaco-' + chave, JSON.stringify(valor)); } catch { /* sem armazenamento: segue sem salvar */ }
+      try { localStorage.setItem('gaco-' + chave, JSON.stringify(valor)); } catch {  }
     },
     limparTudo() {
-      try { Object.keys(localStorage).filter((k) => k.startsWith('gaco-')).forEach((k) => localStorage.removeItem(k)); } catch { /* ignora */ }
+      try { Object.keys(localStorage).filter((k) => k.startsWith('gaco-')).forEach((k) => localStorage.removeItem(k)); } catch {  }
     },
   };
 
-  /* ---------- estado ---------- */
+
   const estado = {
     docs: [],
     favoritos: new Set(memoria.ler('favoritos', [])),
-    lidos: memoria.ler('lidos', {}),             // { id: { versao, em } }
+    lidos: memoria.ler('lidos', {}),
     progresso: {},
     trilhas: [],
     cursos: null,
     cursosVisualizados: new Set(),
-    consultas: memoria.ler('consultas', {}),     // { id: n }
-    vazias: memoria.ler('buscas-vazias', {}),    // { termoNormalizado: { termo, n, ultima } }
+    consultas: memoria.ler('consultas', {}),
+    vazias: memoria.ler('buscas-vazias', {}),
     prefs: Object.assign({ tema: 'auto', texto: 'normal', movimento: 'normal' }, memoria.ler('prefs', {})),
     filtros: { q: '', tipo: '', area: '', ordem: 'relevancia', fav: false },
     tela: '',
@@ -174,7 +174,7 @@
     }
   }
 
-  /* ---------- preferências (tema, texto, movimento) ---------- */
+
   const mqEscuro = window.matchMedia('(prefers-color-scheme: dark)');
 
   function temaEscuroAtivo() {
@@ -203,7 +203,7 @@
     aplicarPrefs();
   }
 
-  /* ---------- aviso rápido (toast) ---------- */
+
   let timerToast;
   function avisar(texto) {
     const t = $('#toast');
@@ -213,11 +213,11 @@
     timerToast = setTimeout(() => t.classList.remove('visivel'), 2600);
   }
 
-  /* =========================================================================
-     BUSCA
-     Ignora acento e maiúscula, aceita plural ("reformáveis" acha "reformável")
-     e exige que TODAS as palavras digitadas apareçam no documento.
-     ========================================================================= */
+
+
+
+
+
   const radical = (w) => {
     if (w.length <= 3) return w;
     const mapa = { oes: 'ao', aes: 'ao', ais: 'al', eis: 'el', ois: 'ol' };
@@ -272,7 +272,7 @@
     return lista.sort(ordens[ordem] || ordens.relevancia);
   }
 
-  /* Destaca os termos buscados sem quebrar o HTML. */
+
   function marcar(texto, toks) {
     const original = String(texto);
     if (!toks.length) return esc(original);
@@ -303,7 +303,7 @@
     return saida + esc(original.slice(pos));
   }
 
-  /* Quando o termo só aparece dentro dos passos, mostra o trecho. */
+
   function trecho(d, toks) {
     if (!toks.length) return '';
     const cabeca = norm(d.titulo + ' ' + d.resumo);
@@ -316,9 +316,9 @@
     return '';
   }
 
-  /* =========================================================================
-     PEÇAS REUTILIZÁVEIS
-     ========================================================================= */
+
+
+
   const badgeTipo = (tipo) => `<span class="badge t-${TIPOS[tipo].cor}">${icone(TIPOS[tipo].icone)}${TIPOS[tipo].rotulo}</span>`;
 
   function situacaoRevisao(d) {
@@ -365,10 +365,10 @@
     return `<div class="kpi ${classe}"><span class="kpi-ic">${icone(ic)}</span><div><strong>${valor}</strong><span class="kpi-rot">${rotulo}</span></div></div>`;
   }
 
-  /* =========================================================================
-     TELAS
-     ========================================================================= */
-  /* ----- Início ----- */
+
+
+
+
   async function renderInicio() {
     const n = estado.docs.length;
     const emDia = estado.docs.filter((d) => situacaoRevisao(d).k === 'ok').length;
@@ -477,7 +477,7 @@
     }
   }
 
-  /* ----- Biblioteca ----- */
+
   let timerVazia;
 
   function urlBiblioteca() {
@@ -531,7 +531,7 @@
           : `<button type="button" class="btn btn-secundario" data-limpar-filtros>Limpar filtros</button>`}</div></div>`;
     }
 
-    // Busca sem resultado vira "lacuna de conhecimento" (aparece em Relatórios).
+
     clearTimeout(timerVazia);
     if (!resultados.length && f.q.trim().length >= 3) {
       timerVazia = setTimeout(() => registrarBuscaVazia(f.q.trim()), 1200);
@@ -549,7 +549,7 @@
     memoria.gravar('buscas-vazias', estado.vazias);
   }
 
-  /* ----- Dúvidas rápidas ----- */
+
   function renderPerguntas(params) {
     const abrir = params.has('p') ? Number(params.get('p')) : -1;
     $('#lista-perguntas').innerHTML = PERGUNTAS.map((p, i) => {
@@ -569,7 +569,7 @@
     }
   }
 
-  /* ----- Treinamentos ----- */
+
   function resumoTrilha(trilha) {
     const feitos = trilha.cursos.filter((curso) => estado.progresso[curso.id]).length;
     const total = trilha.cursos.length;
@@ -643,7 +643,7 @@
     });
   }
 
-  /* ----- Relatórios ----- */
+
   function barras(itens, classe = '') {
     const max = Math.max(1, ...itens.map((i) => i.valor));
     return `<div class="barras">${itens.map((i) =>
@@ -698,7 +698,7 @@
     avisar('Lista exportada em CSV.');
   }
 
-  /* ----- Contato ----- */
+
   function prepararContato(params) {
     const sel = $('#doc-rel');
     if (!sel.options.length) {
@@ -714,6 +714,7 @@
   const campoMensagem = $('#mensagem');
   const campoAssunto = $('#assunto');
   const campoNome = $('#nome');
+  const campoEmail = $('#email');
   const aviso = $('#aviso');
 
   function contarCaracteres() {
@@ -736,32 +737,72 @@
 
   const temNumero = (texto) => /\d/.test(texto);
 
+  function limparErroCampo(campo) {
+    const erro = $('#erro-' + campo.id);
+    campo.removeAttribute('aria-invalid');
+    erro.textContent = '';
+    erro.hidden = true;
+  }
+
+  function marcarErroCampo(campo, mensagem) {
+    const erro = $('#erro-' + campo.id);
+    campo.setAttribute('aria-invalid', 'true');
+    erro.textContent = mensagem;
+    erro.hidden = false;
+  }
+
   function conferirFormulario(evento) {
     let nome = campoNome.value.trim().replace(/\s{2,}/g, ' ');
     campoNome.value = nome;
-    aviso.className = 'aviso erro';
+    campoEmail.value = campoEmail.value.trim();
+    campoMensagem.value = campoMensagem.value.trim();
+    [campoNome, campoEmail, campoMensagem].forEach(limparErroCampo);
+    aviso.textContent = '';
 
     const exigeDetalhe = ['sugestao', 'desatualizado'].includes(campoAssunto.value);
-    if (nome.length < 3 || nome.length > 60) {
-      evento.preventDefault(); aviso.textContent = 'O nome precisa ter entre 3 e 60 letras.'; campoNome.focus();
+    const erros = [];
+    if (!nome) {
+      erros.push([campoNome, 'Informe seu nome.']);
+    } else if (nome.length < 3 || nome.length > 60) {
+      erros.push([campoNome, 'O nome precisa ter entre 3 e 60 caracteres.']);
     } else if (temNumero(nome)) {
-      evento.preventDefault(); aviso.textContent = 'O nome não pode ter números.'; campoNome.focus();
-    } else if (exigeDetalhe && campoMensagem.value.trim().length < 20) {
-      evento.preventDefault(); aviso.textContent = 'Conte um pouco mais: escreva pelo menos 20 caracteres.'; campoMensagem.focus();
-    } else {
-      // Documento relacionado entra no início da mensagem (a tabela do banco não muda).
-      const doc = $('#doc-rel').value;
-      if (doc && !campoMensagem.value.startsWith(`[${doc}]`)) campoMensagem.value = `[${doc}] ${campoMensagem.value}`;
-      aviso.className = 'aviso ok';
-      aviso.textContent = 'Tudo certo! Enviando...';
+      erros.push([campoNome, 'O nome não pode ter números.']);
     }
+
+    if (!campoEmail.value) {
+      erros.push([campoEmail, 'Informe seu e-mail.']);
+    } else if (campoEmail.value.length > 120 || campoEmail.validity.typeMismatch) {
+      erros.push([campoEmail, 'Informe um endereço de e-mail válido.']);
+    }
+
+    if (!campoMensagem.value) {
+      erros.push([campoMensagem, 'Escreva sua mensagem.']);
+    } else if (campoMensagem.value.length > 500) {
+      erros.push([campoMensagem, 'A mensagem deve ter no máximo 500 caracteres.']);
+    } else if (exigeDetalhe && campoMensagem.value.length < 20) {
+      erros.push([campoMensagem, 'Conte um pouco mais: escreva pelo menos 20 caracteres.']);
+    }
+
+    if (erros.length) {
+      evento.preventDefault();
+      erros.forEach(([campo, mensagem]) => marcarErroCampo(campo, mensagem));
+      aviso.className = 'aviso erro';
+      aviso.textContent = 'Revise os campos indicados antes de enviar.';
+      erros[0][0].focus();
+      return;
+    }
+
+    const doc = $('#doc-rel').value;
+    if (doc && !campoMensagem.value.startsWith(`[${doc}]`)) campoMensagem.value = `[${doc}] ${campoMensagem.value}`;
+    aviso.className = 'aviso ok';
+    aviso.textContent = 'Tudo certo! Enviando...';
   }
 
-  /* ----- Configurações: nada a desenhar, só sincronizar com aplicarPrefs ----- */
 
-  /* =========================================================================
-     FICHA DO DOCUMENTO (janela lateral)
-     ========================================================================= */
+
+
+
+
   const dlg = $('#dlg-doc');
 
   function htmlFicha(d) {
@@ -834,7 +875,7 @@
 
   function abrirDoc(id, dentroDaFicha) {
     if (dentroDaFicha) {
-      location.replace('#/doc/' + encodeURIComponent(id));   // troca a ficha sem empilhar histórico
+      location.replace('#/doc/' + encodeURIComponent(id));
     } else {
       estado.docPorNavegacao = true;
       location.hash = '#/doc/' + encodeURIComponent(id);
@@ -843,7 +884,7 @@
 
   dlg.addEventListener('close', () => {
     estado.docAberto = '';
-    if (!location.hash.startsWith('#/doc/')) return;       // fechou por troca de rota
+    if (!location.hash.startsWith('#/doc/')) return;
     if (estado.docPorNavegacao) { estado.docPorNavegacao = false; history.back(); }
     else { history.replaceState(null, '', '#/biblioteca'); rotear(); }
   });
@@ -897,9 +938,9 @@
     catch { avisar('Não foi possível copiar. Copie o endereço na barra do navegador.'); }
   }
 
-  /* =========================================================================
-     ROTAS  (#/tela?parametros   e   #/doc/CÓDIGO)
-     ========================================================================= */
+
+
+
   function lerRota() {
     const bruto = location.hash.replace(/^#\/?/, '');
     const [caminho, qs = ''] = bruto.split('?');
@@ -970,9 +1011,9 @@
     irPara('#/biblioteca' + (termo ? '?q=' + encodeURIComponent(termo) : ''));
   }
 
-  /* =========================================================================
-     MENU (celular)
-     ========================================================================= */
+
+
+
   function fecharMenu() {
     document.body.classList.remove('nav-aberta');
     $('#veu').hidden = true;
@@ -986,9 +1027,9 @@
     if (abrir) $('.lateral nav a').focus();
   }
 
-  /* =========================================================================
-     BUSCA GLOBAL COM SUGESTÕES
-     ========================================================================= */
+
+
+
   const campoGlobal = $('#busca-global');
   const listaSug = $('#sugestoes');
   let sugestoes = [];
@@ -1040,9 +1081,9 @@
   listaSug.addEventListener('mousedown', (e) => { e.preventDefault(); const li = e.target.closest('li'); if (li) escolherSugestao(li); });
   $('#form-busca').addEventListener('submit', (e) => { e.preventDefault(); fecharSugestoes(); irBusca(campoGlobal.value); });
 
-  /* =========================================================================
-     EVENTOS GERAIS
-     ========================================================================= */
+
+
+
   document.addEventListener('click', (e) => {
     const alvo = e.target;
 
@@ -1167,8 +1208,21 @@
   $('#form-hero').addEventListener('submit', (e) => { e.preventDefault(); irBusca($('#hero-q').value); });
   $('#form-bib').addEventListener('submit', (e) => e.preventDefault());
   $('#form-contato').addEventListener('submit', conferirFormulario);
-  $('#form-contato').addEventListener('reset', () => setTimeout(() => { contarCaracteres(); atualizarAssunto(); aviso.textContent = ''; }, 0));
-  campoMensagem.addEventListener('input', contarCaracteres);
+  $('#form-contato').addEventListener('reset', () => setTimeout(() => {
+    contarCaracteres();
+    atualizarAssunto();
+    aviso.textContent = '';
+    aviso.className = 'aviso';
+    [campoNome, campoEmail, campoMensagem].forEach(limparErroCampo);
+  }, 0));
+  $('#form-contato').addEventListener('input', (evento) => {
+    if ([campoNome, campoEmail, campoMensagem].includes(evento.target)) {
+      limparErroCampo(evento.target);
+      aviso.textContent = '';
+      aviso.className = 'aviso';
+    }
+    if (evento.target === campoMensagem) contarCaracteres();
+  });
 
   $('#form-entrar').addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -1221,9 +1275,9 @@
   window.addEventListener('hashchange', rotear);
   mqEscuro.addEventListener('change', aplicarPrefs);
 
-  /* =========================================================================
-     INÍCIO
-     ========================================================================= */
+
+
+
   (async function iniciar() {
     aplicarPrefs();
     try {

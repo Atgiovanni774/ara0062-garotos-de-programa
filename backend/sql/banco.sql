@@ -6,15 +6,15 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
---
--- Banco de dados: `login`
---
 
--- --------------------------------------------------------
 
---
--- Estrutura para tabela `cursos`
---
+
+
+
+
+
+
+
 
 CREATE TABLE `cursos` (
   `id_curso` int(11) NOT NULL,
@@ -26,9 +26,9 @@ CREATE TABLE `cursos` (
   `criado_em` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Despejando dados para a tabela `cursos`
---
+
+
+
 
 INSERT INTO `cursos` (`id_curso`, `titulo_curso`, `descricao_curso`, `carga_horaria`, `cargo_destinado`, `status_curso`, `criado_em`) VALUES
 (1, 'Recebimento e Conferência', 'Técnicas de inspeção visual, validação de documentação (danfe) e identificação de avarias no recebimento de mercadorias.', 8, 'Auxiliar_de_Logistica', 'ativo', '2026-11-06 23:05:52'),
@@ -62,11 +62,11 @@ INSERT INTO `cursos` (`id_curso`, `titulo_curso`, `descricao_curso`, `carga_hora
 (29, 'Condução de Reuniões', 'Como estruturar pautas, controlar o tempo de fala e gerar planos de ação claros nas reuniões diárias (Daily/DDS).', 10, 'Supervisor_Geral', 'ativo', '2026-11-06 23:05:52'),
 (30, 'Avaliação de Desempenho', 'Ferramentas de avaliação 360, criação de Planos de Desenvolvimento Individual (PDI) e retenção de talentos.', 25, 'Supervisor_Geral', 'ativo', '2026-11-06 23:05:52');
 
--- --------------------------------------------------------
 
---
--- Estrutura para tabela `mensagens`
---
+
+
+
+
 
 CREATE TABLE `mensagens` (
   `id` int(11) NOT NULL,
@@ -78,19 +78,19 @@ CREATE TABLE `mensagens` (
   `criada_em` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Despejando dados para a tabela `mensagens`
---
+
+
+
 
 INSERT INTO `mensagens` (`id`, `nome`, `email`, `assunto`, `mensagem`, `status`, `criada_em`) VALUES
 (1, 'Jonata', 'jonata@gmail.com', 'outro', 'Que site bacana!', 'em_analise', '2026-11-07 13:40:03'),
 (2, 'Arthur Giovanne', 'arthur@gmail.com', 'desatualizado', '[NOR-SEG-003] O curso NOR-SEG-003 tem pouca informação.', 'nova', '2026-11-17 19:56:47');
 
--- --------------------------------------------------------
 
---
--- Estrutura para tabela `progresso_curso`
---
+
+
+
+
 
 CREATE TABLE `progresso_curso` (
   `id_progresso` int(11) NOT NULL,
@@ -103,11 +103,11 @@ CREATE TABLE `progresso_curso` (
   `visualizado_em` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- --------------------------------------------------------
 
---
--- Estrutura para tabela `usuario`
---
+
+
+
+
 
 CREATE TABLE `usuario` (
   `id_usuario` int(11) NOT NULL,
@@ -121,81 +121,81 @@ CREATE TABLE `usuario` (
   `status` enum('ativo','pendente','bloqueado') NOT NULL DEFAULT 'ativo'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Despejando dados para a tabela `usuario`
---
+
+
+
 
 INSERT INTO `usuario` (`id_usuario`, `nm_usuario`, `email_usuario`, `senha_usuario`, `cargo_usuario`, `status_ativo`, `criado_em`, `token_senha`, `status`) VALUES
 (1, 'Jonata', 'jonata@gmail.com', '$2y$10$WmO/eFgZXI3yCSwj1xD81u7xKc.6VZZbc3Mj8Zr3FlBN/4k7Ziady', 'Auxiliar_Fiscal', 'ativo', '2026-11-06 22:46:21', NULL, 'ativo'),
 (2, 'Felipe', 'felipe@gmail.com', '$2y$10$WmO/eFgZXI3yCSwj1xD81u7xKc.6VZZbc3Mj8Zr3FlBN/4k7Ziady', 'Auxiliar_de_Logistica', 'ativo', '2026-11-06 22:46:21', NULL, 'ativo'),
 (3, 'Arthur', 'arthur@gmail.com', '$2y$10$WmO/eFgZXI3yCSwj1xD81u7xKc.6VZZbc3Mj8Zr3FlBN/4k7Ziady', 'Supervisor_Geral', 'ativo', '2026-11-07 01:42:50', NULL, 'ativo');
 
---
--- Índices para tabelas despejadas
---
 
---
--- Índices de tabela `cursos`
---
+
+
+
+
+
+
 ALTER TABLE `cursos`
   ADD PRIMARY KEY (`id_curso`);
 
---
--- Índices de tabela `mensagens`
---
+
+
+
 ALTER TABLE `mensagens`
   ADD PRIMARY KEY (`id`);
 
---
--- Índices de tabela `progresso_curso`
---
+
+
+
 ALTER TABLE `progresso_curso`
   ADD PRIMARY KEY (`id_progresso`),
   ADD UNIQUE KEY `uq_progresso_usuario_curso` (`id_usuario`,`id_curso`),
   ADD KEY `id_curso` (`id_curso`);
 
---
--- Índices de tabela `usuario`
---
+
+
+
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id_usuario`),
   ADD UNIQUE KEY `email_usuario` (`email_usuario`);
 
---
--- AUTO_INCREMENT para tabelas despejadas
---
 
---
--- AUTO_INCREMENT de tabela `cursos`
---
+
+
+
+
+
+
 ALTER TABLE `cursos`
   MODIFY `id_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
---
--- AUTO_INCREMENT de tabela `mensagens`
---
+
+
+
 ALTER TABLE `mensagens`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
---
--- AUTO_INCREMENT de tabela `progresso_curso`
---
+
+
+
 ALTER TABLE `progresso_curso`
   MODIFY `id_progresso` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- AUTO_INCREMENT de tabela `usuario`
---
+
+
+
 ALTER TABLE `usuario`
   MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=435;
 
---
--- Restrições para tabelas despejadas
---
 
---
--- Restrições para tabelas `progresso_curso`
---
+
+
+
+
+
+
 ALTER TABLE `progresso_curso`
   ADD CONSTRAINT `progresso_curso_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`),
   ADD CONSTRAINT `progresso_curso_ibfk_2` FOREIGN KEY (`id_curso`) REFERENCES `cursos` (`id_curso`);

@@ -39,7 +39,7 @@ function usuarioAtual(): ?array
 
     global $conexao;
     if (isset($conexao) && $conexao instanceof PDO) {
-        $consulta = $conexao->prepare("SELECT id_usuario AS id, nm_usuario AS nome, email_usuario AS email, CASE cargo_usuario WHEN 'Supervisor_Geral' THEN 'supervisor_geral' WHEN 'Auxiliar_Fiscal' THEN 'auxiliar_fiscal' ELSE 'auxiliar_de_logística' END AS papel FROM usuario WHERE id_usuario = ? AND status_ativo = 1 LIMIT 1");
+        $consulta = $conexao->prepare("SELECT id_usuario AS id, nm_usuario AS nome, email_usuario AS email, CASE cargo_usuario WHEN 'Supervisor_Geral' THEN 'supervisor_geral' WHEN 'Auxiliar_Fiscal' THEN 'auxiliar_fiscal' ELSE 'auxiliar_de_logística' END AS papel FROM usuario WHERE id_usuario = ? AND status_ativo = 'ativo' LIMIT 1");
         $consulta->execute([(int) $sessao['id']]);
         $atual = $consulta->fetch(PDO::FETCH_ASSOC);
         if (!$atual) {

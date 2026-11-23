@@ -1,9 +1,9 @@
-/* ===========================================================================
-   Portal GACO: identidade visual
-   Verde-mineral como cor principal. Os quatro tipos de documento usam um
-   código de cor inspirado em sinalização de segurança (ver --cat-*).
-   O tema escuro está em tema-noite.css e só troca as variáveis do :root.
-   =========================================================================== */
+
+
+
+
+
+
 
 :root {
     --principal: #1f6f5c;
@@ -28,7 +28,7 @@
     --perigo: #b3261e;
     --perigo-bg: #fbe9e7;
 
-    /* tipos de documento */
+
     --cat-proc: #1f6f5c;   --cat-proc-bg: #dcefe8;   --cat-proc-tx: #0f4f40;
     --cat-inst: #1d6aa5;   --cat-inst-bg: #dbeaf6;   --cat-inst-tx: #134b73;
     --cat-legal: #6d4bb5;  --cat-legal-bg: #e8e1f5;  --cat-legal-tx: #4a2f86;
@@ -40,7 +40,7 @@
     color-scheme: light;
 }
 
-/* ---------- base ---------- */
+
 *, *::before, *::after { box-sizing: border-box; }
 html { font-size: 100%; scroll-behavior: smooth; }
 html.texto-grande { font-size: 112.5%; }
@@ -80,7 +80,7 @@ button { cursor: pointer; }
     stroke-linecap: round; stroke-linejoin: round;
 }
 
-/* ---------- layout geral ---------- */
+
 .lateral {
     position: fixed; inset: 0 auto 0 0; width: var(--larg-nav); z-index: 40;
     display: flex; flex-direction: column;
@@ -117,7 +117,7 @@ main { flex: 1; width: 100%; max-width: 1240px; margin-inline: auto; padding: 28
 
 .veu { position: fixed; inset: 0; background: rgba(5, 15, 12, .55); z-index: 35; }
 
-/* ---------- barra superior ---------- */
+
 .topbar {
     position: sticky; top: 0; z-index: 30;
     display: flex; align-items: center; gap: 12px;
@@ -156,7 +156,7 @@ h1[tabindex="-1"]:focus { outline: none; }
 .sugestoes .sug-cod { font-size: .75rem; font-weight: 600; color: var(--texto-fraco); min-width: 88px; font-variant-numeric: tabular-nums; }
 .sugestoes .sug-todos { color: var(--principal); font-weight: 500; border-top: 1px solid var(--borda); border-radius: 0 0 9px 9px; margin-top: 4px; }
 
-/* ---------- botões ---------- */
+
 .btn {
     display: inline-flex; align-items: center; justify-content: center; gap: 8px;
     padding: 10px 20px; border-radius: 10px; border: 1px solid transparent;
@@ -182,7 +182,7 @@ h1[tabindex="-1"]:focus { outline: none; }
 .btn-icone:hover { border-color: var(--principal); color: var(--principal); }
 .btn-icone .ic { width: 20px; height: 20px; }
 
-/* ---------- telas ---------- */
+
 .tela { display: flex; flex-direction: column; gap: 20px; }
 .tela-cab { padding: 8px 0 4px; max-width: 70ch; }
 .tela-cab h1 { font-size: 2rem; font-weight: 700; }
@@ -202,7 +202,7 @@ h1[tabindex="-1"]:focus { outline: none; }
 .texto-leitura { max-width: 72ch; margin-bottom: 12px; }
 .fonte-desafio { margin-top: 14px; font-size: .85rem; color: var(--texto-fraco); }
 
-/* ---------- hero ---------- */
+
 .hero {
     position: relative; overflow: hidden; isolation: isolate;
     padding: clamp(28px, 5vw, 56px) clamp(22px, 4vw, 52px);
@@ -233,7 +233,7 @@ h1[tabindex="-1"]:focus { outline: none; }
 }
 .hero-chips button:hover { background: rgba(255, 255, 255, .24); }
 
-/* ---------- indicadores ---------- */
+
 .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; }
 .kpi {
     display: flex; align-items: center; gap: 14px; padding: 16px 18px;
@@ -246,7 +246,7 @@ h1[tabindex="-1"]:focus { outline: none; }
 .kpi strong { display: block; font-size: 1.65rem; line-height: 1.1; font-weight: 600; font-variant-numeric: tabular-nums; }
 .kpi span.kpi-rot { font-size: .85rem; color: var(--texto-fraco); }
 
-/* ---------- listas da página inicial ---------- */
+
 .lista-atalhos li + li { border-top: 1px solid var(--borda); }
 .lista-atalhos a {
     display: flex; align-items: center; justify-content: space-between; gap: 14px;
@@ -283,7 +283,7 @@ h1[tabindex="-1"]:focus { outline: none; }
 .vazio strong { display: block; color: var(--texto); font-size: 1.05rem; margin-bottom: 4px; }
 .vazio .btn { margin-top: 14px; }
 
-/* ---------- selos e status ---------- */
+
 .badge {
     display: inline-flex; align-items: center; gap: 6px; padding: 2px 10px 2px 8px;
     border-radius: 999px; font-size: .78rem; font-weight: 500; white-space: nowrap; line-height: 1.6;
@@ -300,7 +300,7 @@ h1[tabindex="-1"]:focus { outline: none; }
 .status.breve { color: var(--alerta); }
 .status.vencida { color: var(--perigo); }
 
-/* ---------- biblioteca ---------- */
+
 .filtros { display: flex; flex-direction: column; gap: 16px; }
 .campo-busca { position: relative; }
 .campo-busca .ic { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--texto-fraco); width: 22px; height: 22px; }
@@ -365,7 +365,7 @@ mark { background: #ffe58a; color: #1c2723; border-radius: 3px; padding: 0 2px; 
 .btn-fav[aria-pressed="true"] { color: #d99a00; }
 .btn-fav .ic { width: 20px; height: 20px; }
 
-/* ---------- dúvidas rápidas ---------- */
+
 .faq-lista { display: flex; flex-direction: column; gap: 12px; max-width: 900px; }
 .faq { background: var(--superficie); border: 1px solid var(--borda); border-radius: 12px; overflow: hidden; }
 .faq summary {
@@ -390,7 +390,7 @@ mark { background: #ffe58a; color: #1c2723; border-radius: 3px; padding: 0 2px; 
 .faq-docs a:hover { background: var(--superficie-2); }
 .faq-docs a span.t { flex: 1; font-weight: 500; }
 
-/* ---------- treinamentos ---------- */
+
 .trilhas { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 20px; align-items: start; }
 .trilha-cab h2 { font-size: 1.2rem; }
 .trilha-cab p { color: var(--texto-fraco); font-size: .92rem; margin-top: 4px; }
@@ -419,7 +419,7 @@ mark { background: #ffe58a; color: #1c2723; border-radius: 3px; padding: 0 2px; 
 .curso-detalhes p { margin-bottom: 10px; color: var(--texto-fraco); }
 .curso-detalhes .btn { display: inline-flex; }
 
-/* ---------- relatórios ---------- */
+
 .barras { display: flex; flex-direction: column; gap: 10px; }
 .barra-linha { display: grid; grid-template-columns: minmax(110px, 38%) 1fr 34px; align-items: center; gap: 12px; font-size: .9rem; }
 .barra-linha .trilho { width: 100%; height: 14px; border: 0; border-radius: 4px; background: var(--superficie-2); overflow: hidden; accent-color: var(--cat, var(--principal)); }
@@ -436,7 +436,7 @@ mark { background: #ffe58a; color: #1c2723; border-radius: 3px; padding: 0 2px; 
 .tabela a { font-weight: 500; }
 .tabela .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
 
-/* ---------- formulários ---------- */
+
 .form { display: flex; flex-direction: column; gap: 18px; }
 .campo label, fieldset legend { display: block; margin-bottom: 6px; font-weight: 600; font-size: .92rem; }
 .opcional { font-weight: 400; color: var(--texto-fraco); }
@@ -452,6 +452,8 @@ textarea { resize: vertical; min-height: 140px; }
 .aviso { min-height: 1.5em; font-weight: 500; }
 .aviso.erro { color: var(--perigo); }
 .aviso.ok { color: var(--ok); }
+.erro-campo { margin-top: 5px; color: var(--perigo); font-size: .85rem; font-weight: 500; }
+.campo :is(input, textarea, select)[aria-invalid="true"] { border-color: var(--perigo); }
 .grid-contato { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(260px, 1fr); gap: 20px; align-items: start; }
 .nota-lateral h2 { font-size: 1.1rem; margin-bottom: 12px; }
 .passos-simples { counter-reset: p; display: flex; flex-direction: column; gap: 14px; }
@@ -467,10 +469,10 @@ fieldset { border: 0; padding: 0; margin: 0; }
 .opcao input { width: 18px; height: 18px; accent-color: var(--principal); }
 .ajuda { color: var(--texto-fraco); font-size: .9rem; margin-bottom: 12px; }
 
-/* ---------- equipe ---------- */
+
 .banner { width: 100%; height: 200px; object-fit: cover; border-radius: 14px; }
 
-/* ---------- ficha do documento ---------- */
+
 dialog.dlg-doc {
     border: 0; padding: 0; margin: 0 0 0 auto;
     width: min(780px, 100vw); max-width: 100vw; height: 100dvh; max-height: 100dvh;
@@ -525,7 +527,7 @@ dialog.dlg-doc::backdrop { background: rgba(6, 18, 14, .6); backdrop-filter: blu
 .btn-fav-dlg[aria-pressed="true"] { color: #b98400; }
 .btn-fav-dlg[aria-pressed="true"] .ic { fill: currentColor; }
 
-/* ---------- toast e rodapé ---------- */
+
 .toast {
     position: fixed; left: 50%; bottom: 24px; z-index: 200; transform: translate(-50%, 20px);
     max-width: calc(100vw - 32px); padding: 12px 20px; border-radius: 10px;
@@ -537,7 +539,7 @@ dialog.dlg-doc::backdrop { background: rgba(6, 18, 14, .6); backdrop-filter: blu
 .rodape { padding: 28px clamp(16px, 3vw, 40px); border-top: 1px solid var(--borda); text-align: center; color: var(--texto-fraco); font-size: .88rem; display: flex; flex-direction: column; gap: 4px; }
 .rodape-fim { margin-top: 10px; font-size: .82rem; }
 
-/* ---------- páginas simples do backend (processa-contato.php) ---------- */
+
 body:not(.app) { display: block; }
 body:not(.app) > header, body:not(.app) > footer { max-width: 720px; margin: 0 auto; padding: 28px 20px; }
 body:not(.app) > header h1 { font-size: 1.6rem; }
@@ -546,7 +548,7 @@ body:not(.app) section#resposta { background: var(--superficie); border: 1px sol
 body:not(.app) blockquote { margin: 6px 0; padding: 12px 16px; border-left: 5px solid var(--principal); background: var(--superficie-2); border-radius: 4px 10px 10px 4px; }
 body:not(.app) > footer { text-align: center; color: var(--texto-fraco); font-size: .85rem; }
 
-/* ---------- responsivo ---------- */
+
 @media (max-width: 1100px) {
     .grid-2, .grid-contato { grid-template-columns: 1fr; }
 }
@@ -580,7 +582,7 @@ body:not(.app) > footer { text-align: center; color: var(--texto-fraco); font-si
 html.sem-movimento { scroll-behavior: auto; }
 html.sem-movimento *, html.sem-movimento *::before, html.sem-movimento *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
 
-/* ---------- impressão: só a ficha do documento ---------- */
+
 @media print {
     .lateral, .topbar, .veu, .toast, .rodape, .dlg-rodape, .dlg-topo .btn-icone, .pular { display: none !important; }
     body.app .principal { display: none; }
@@ -589,7 +591,7 @@ html.sem-movimento *, html.sem-movimento *::before, html.sem-movimento *::after 
     body { background: #fff; color: #000; }
 }
 
-/* ---------- acesso e controle de perfis ---------- */
+
 .sprite-icones { position: absolute; overflow: hidden; }
 .acesso {
     width: min(100% - 32px, 480px);

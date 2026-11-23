@@ -1,5 +1,5 @@
--- Para bancos que já foram criados com a versão anterior do banco.sql.
--- Execute uma única vez no banco fulano antes de usar login/gestão de solicitações.
+
+
 ALTER TABLE mensagens
   ADD COLUMN status ENUM('nova', 'em_analise', 'resolvida') NOT NULL DEFAULT 'nova';
 

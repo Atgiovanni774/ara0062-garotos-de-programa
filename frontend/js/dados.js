@@ -1,34 +1,3 @@
-/* ===========================================================================
-   Portal GACO — camada de dados
-
-   HOJE: os dados ficam nos arrays abaixo (conteúdo de DEMONSTRAÇÃO).
-   DEPOIS DO BANCO: só o objeto `API` (no fim do arquivo) precisa mudar.
-   Troque o corpo de API.listar() por algo como:
-
-       const r = await fetch('../backend/api/documentos.php');
-       return r.json();
-
-   desde que cada documento volte com os mesmos campos abaixo, o resto do
-   front (busca, filtros, relatórios) continua funcionando sem alteração.
-
-   Campos de um documento:
-     id          código único (ex.: PRO-LOG-014)
-     titulo, resumo
-     tipo        procedimento | instrucao | legal | seguranca
-     area        uma das AREAS
-     versao      texto (ex.: "3.1")
-     atualizado  AAAA-MM-DD   (data da versão vigente)
-     revisao     AAAA-MM-DD   (próxima revisão obrigatória)
-     responsavel cargo/área dona do documento
-     consultas   contador de consultas (no banco: COUNT de uma tabela de acessos)
-     passos[], cuidados[], referencias[], tags[], relacionados[] (ids)
-
-   ATENÇÃO: os textos abaixo são ILUSTRATIVOS, criados para o protótipo.
-   Não são os procedimentos oficiais da empresa. Referências a NRs e leis
-   existem de verdade, mas o passo a passo deve ser substituído pelo
-   documento oficial vigente.
-   =========================================================================== */
-
 const TIPOS = {
   procedimento: { rotulo: 'Procedimento',          plural: 'Procedimentos',          cor: 'proc',  icone: 'file'   },
   instrucao:    { rotulo: 'Instrução de trabalho', plural: 'Instruções de trabalho', cor: 'inst',  icone: 'list'   },
@@ -207,7 +176,7 @@ const DOCUMENTOS = [
     tags: ['LOTO', 'bloqueio', 'etiquetagem', 'cadeado', 'energia', 'manutenção', 'desenergizar'],
     relacionados: ['NOR-SEG-003', 'IT-MAN-008'],
   },
-  
+
   {
     id: 'PRO-AMB-009', tipo: 'procedimento', area: 'Meio Ambiente', versao: '1.8',
     titulo: 'Resposta a derramamento de óleo e produtos químicos',
@@ -325,7 +294,7 @@ const DOCUMENTOS = [
   },
 ];
 
-/* Dúvidas do dia a dia. As quatro primeiras vêm direto da demanda. */
+
 const PERGUNTAS = [
   {
     q: 'Como faço armazenagem de material reformável?',
@@ -364,7 +333,7 @@ const PERGUNTAS = [
   },
 ];
 
-/* Único ponto de acesso aos dados. Troque aqui quando o banco estiver pronto. */
+
 const API = {
   async listar() {
     return DOCUMENTOS;

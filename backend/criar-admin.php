@@ -34,7 +34,7 @@ if (mb_strlen($nome) < 3 || !filter_var($email, FILTER_VALIDATE_EMAIL) || strlen
 }
 
 try {
-    $comando = $conexao->prepare("INSERT INTO usuario (nm_usuario, email_usuario, senha_usuario, cargo_usuario, status_ativo) VALUES (?, ?, ?, 'Supervisor_Geral', 1)");
+    $comando = $conexao->prepare("INSERT INTO usuario (nm_usuario, email_usuario, senha_usuario, cargo_usuario, status_ativo) VALUES (?, ?, ?, 'Supervisor_Geral', 'ativo')");
     $comando->execute([$nome, $email, password_hash($senha, PASSWORD_DEFAULT)]);
     echo "supervisor_geral criado. Apague a senha do terminal/histórico, se aplicável.\n";
 } catch (PDOException $erro) {

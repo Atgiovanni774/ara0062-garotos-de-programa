@@ -85,11 +85,16 @@ O conteúdo dos 14 documentos é **de demonstração**. As normas e leis citadas
 
 O login depende de PHP e MySQL; abrir com Live Server não executa o backend.
 
-1. Inicie Apache e MySQL (por exemplo, pelo XAMPP) e coloque a pasta do projeto no diretório servido pelo Apache.
-2. Importe `backend/sql/banco.sql` no MySQL. Para banco existente, execute uma vez `backend/sql/migracao-auth.sql` e `backend/sql/migracao-progresso-cursos.sql`.
-3. Confira host, banco e credenciais em `backend/config/conexao.php`.
-4. No terminal, na raiz do projeto, execute `php backend/criar-admin.php` e informe os dados do primeiro supervisor_geral. A senha é digitada sem aparecer no terminal.
-5. Acesse a pasta `frontend/` pelo endereço local do Apache, por exemplo `http://localhost/ara0062-garotos-de-programa-main/frontend/`.
+1. No XAMPP, copie a pasta do repositório para `C:\xampp\htdocs\ara0062-garotos-de-programa-main`. Se o nome da pasta for diferente, use esse nome no endereço do último passo.
+2. No painel do XAMPP, inicie Apache e MySQL.
+3. Abra `http://localhost/phpmyadmin`, selecione **Importar** e escolha `backend/sql/banco.sql`. O arquivo cria o banco `login` e as tabelas necessárias para o projeto. Para uma instalação nova, não execute também os arquivos de migração.
+4. Confira host, banco e credenciais em `backend/config/conexao.php`.
+5. No terminal, entre na pasta do projeto e crie a conta inicial de supervisor:
+   - PowerShell: `& C:\xampp\php\php.exe backend\criar-admin.php`
+   - Linux/macOS com PHP no `PATH`: `php backend/criar-admin.php`
+6. Abra `http://localhost/ara0062-garotos-de-programa-main/frontend/`. Entre com a conta criada; em **Contato**, envie uma mensagem e, como supervisor, confira o novo registro em **Solicitações de conteúdo**.
+
+Para atualizar um banco já existente, faça backup antes de aplicar migrações. Execute `backend/sql/migracao-auth.sql` e `backend/sql/migracao-progresso-cursos.sql` somente quando o banco ainda não tiver as alterações correspondentes.
 
 Os estilos ficam exclusivamente nas folhas externas `frontend/css/estilo.css` e `frontend/css/tema-noite.css`.
 
@@ -103,7 +108,8 @@ Os estilos ficam exclusivamente nas folhas externas `frontend/css/estilo.css` e 
 │  │  └─ tema-noite.css       variáveis do modo escuro
 │  ├─ js/
 │  │  ├─ dados.js             documentos, dúvidas e a camada API
-│  │  └─ script.js            rotas, busca, ficha do documento e telas
+│  │  ├─ script.js            rotas, busca, ficha do documento e telas
+│  │  └─ tema-inicial.js      aplica as preferências visuais salvas
 │  └─ img/
 │     └─ .gitkeep             mantém a pasta no Git
 └─ backend/                   tudo o que roda no servidor
@@ -123,9 +129,9 @@ Os estilos ficam exclusivamente nas folhas externas `frontend/css/estilo.css` e 
    └─ teste-conexao.php       testa a conexão do PHP com o banco de dados
 ```
 
-## Próximo passo: banco de dados
+## Dados da biblioteca e do banco
 
-Hoje os documentos vêm de `frontend/js/dados.js`. **O único ponto a trocar é `API.listar()`** (no fim do arquivo): em vez de devolver o array local, ele passa a fazer `fetch('../backend/api/documentos.php')` e devolver o JSON. A busca, os filtros e os relatórios continuam iguais, desde que cada documento volte com estes campos:
+Os documentos da biblioteca e as perguntas rápidas são conteúdo de demonstração em `frontend/js/dados.js`. O formulário de contato, os cursos e as contas já usam MySQL. As solicitações gravadas são listadas dinamicamente pela tela **Solicitações de conteúdo**, por consulta PHP ao banco. Para uma evolução futura, o catálogo de documentos também pode ser movido para o banco, mantendo o formato de dados consumido pela interface:
 
 | Campo no JSON | Sugestão de coluna |
 | :--- | :--- |
@@ -144,14 +150,16 @@ Favoritos, leituras confirmadas, progresso dos treinamentos e buscas sem resulta
 
 ## Quem fez o quê
 
-| Integrante                            |  Principais Responsabilidade       | Matrícula                          | Usuário GitHub                     | 
-| ------------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| *Arthur Giovanni Lacerda Lisboa*      | Liderança e organização do projeto | 202601758233                       | @Atgiovanni774                     |
-| *Jonata Romano Guimarães*             | Criação e integração Banco de Dados| 202603331725                       | @JonataRomano                      |
-| *Guilherme Lopes Gomes*               | HTML Body                          | 202602601851                       | @Guilhermez7                       |
-| *Matheus Tadeu Nunes Vidigal Tiote*   | Cabeçalho e Navegação              | 202603302521                       | @matheustnvtiote-commits           |
-| *Felipe Herminio Nunes*               | Tabelas                            |                                    |                                    |
-| *Marcos Rodrigues Rosa*               | Formulários                        |                                    |                                    |
+| Integrante | Usuário GitHub | Páginas, arquivos ou funcionalidades construídas |
+| --- | --- | --- |
+| Arthur Giovanni Lacerda Lisboa | @Atgiovanni774 | Liderança e organização das entregas da equipe e do projeto. |
+| Jonata Romano Guimarães | @JonataRomano | Banco de dados MySQL e integração com PHP: `backend/sql/banco.sql` e `backend/config/conexao.php`. |
+| Guilherme Lopes Gomes | @Guilhermez7 | Estrutura e conteúdo das seções da página em `frontend/index.html`. |
+| Matheus Tadeu Nunes Vidigal Tiote | @matheustnvtiote-commits | Cabeçalho, menu e navegação entre as telas em `frontend/index.html` e `frontend/js/script.js`. |
+| Felipe Herminio Nunes | A confirmar | Estrutura das tabelas e listagem de registros do projeto. |
+| Marcos Rodrigues Rosa | A confirmar | Formulário de contato, validação e envio: `frontend/index.html`, `frontend/js/script.js` e `backend/processa-contato.php`. |
+
+Antes da entrega, cada integrante deve confirmar que a descrição corresponde ao que realmente construiu e preencher seu usuário GitHub. A rubrica avalia individualmente se a pessoa consegue explicar a parte atribuída a ela.
 
 ---
 

@@ -1,8 +1,8 @@
-/* ===========================================================================
-   Segundo tema: modo escuro
-   Só redefine as variáveis do :root. É ativado pela classe "dark-mode" no
-   <html> (Configurações, botão da barra superior ou preferência do aparelho).
-   =========================================================================== */
+
+
+
+
+
 
 :root.dark-mode {
     --principal: #4cc3a0;

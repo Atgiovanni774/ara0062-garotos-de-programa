@@ -38,7 +38,7 @@ try {
             responderJson(['erro' => 'Tipo de conta inválido.'], 422);
         }
 
-        // Contas privilegiadas ficam pendentes até um supervisor_geral aprová-las.
+
         $status = $papel === 'auxiliar_de_logística' ? 'ativo' : 'pendente';
         $cargos = [
             'auxiliar_de_logística' => 'Auxiliar_de_Logistica',
@@ -48,7 +48,7 @@ try {
         $sql = 'INSERT INTO usuario (nm_usuario, email_usuario, senha_usuario, cargo_usuario, status_ativo) VALUES (?, ?, ?, ?, ?)';
         $comando = $conexao->prepare($sql);
         try {
-            $comando->execute([$nome, $email, password_hash($senha, PASSWORD_DEFAULT), $cargos[$papel], $status === 'ativo' ? 1 : 0]);
+            $comando->execute([$nome, $email, password_hash($senha, PASSWORD_DEFAULT), $cargos[$papel], $status]);
         } catch (PDOException $erro) {
             if ($erro->getCode() === '23000') {
                 responderJson(['erro' => 'Já existe uma conta com este e-mail.'], 409);
@@ -67,7 +67,7 @@ try {
         exigirCsrf();
         $email = mb_strtolower(trim((string) ($entrada['email'] ?? '')));
         $senha = (string) ($entrada['senha'] ?? '');
-        $consulta = $conexao->prepare("SELECT id_usuario AS id, nm_usuario AS nome, email_usuario AS email, senha_usuario AS senha_hash, CASE cargo_usuario WHEN 'Supervisor_Geral' THEN 'supervisor_geral' WHEN 'Auxiliar_Fiscal' THEN 'auxiliar_fiscal' ELSE 'auxiliar_de_logística' END AS papel, 'ativo' AS status FROM usuario WHERE email_usuario = ? AND status_ativo = 1 LIMIT 1");
+        $consulta = $conexao->prepare("SELECT id_usuario AS id, nm_usuario AS nome, email_usuario AS email, senha_usuario AS senha_hash, status_ativo AS status, CASE cargo_usuario WHEN 'Supervisor_Geral' THEN 'supervisor_geral' WHEN 'Auxiliar_Fiscal' THEN 'auxiliar_fiscal' ELSE 'auxiliar_de_logística' END AS papel FROM usuario WHERE email_usuario = ? LIMIT 1");
         $consulta->execute([$email]);
         $usuario = $consulta->fetch(PDO::FETCH_ASSOC);
 
@@ -75,7 +75,10 @@ try {
             responderJson(['erro' => 'E-mail ou senha incorretos.'], 401);
         }
         if ($usuario['status'] !== 'ativo') {
-            responderJson(['erro' => 'Esta conta ainda aguarda aprovação do supervisor_geral.'], 403);
+            $mensagem = $usuario['status'] === 'bloqueado'
+                ? 'Esta conta está bloqueada. Procure um supervisor_geral.'
+                : 'Esta conta ainda aguarda aprovação do supervisor_geral.';
+            responderJson(['erro' => $mensagem], 403);
         }
         $dados = definirSessaoUsuario($usuario);
         responderJson(['usuario' => $dados, 'csrf' => $_SESSION['csrf']]);
@@ -94,7 +97,7 @@ try {
 
     if ($metodo === 'GET' && $acao === 'usuarios') {
         exigirPapel(['supervisor_geral']);
-        $usuarios = $conexao->query("SELECT id_usuario AS id, nm_usuario AS nome, email_usuario AS email, CASE cargo_usuario WHEN 'Supervisor_Geral' THEN 'supervisor_geral' WHEN 'Auxiliar_Fiscal' THEN 'auxiliar_fiscal' ELSE 'auxiliar_de_logística' END AS papel, CASE WHEN status_ativo = 1 THEN 'ativo' ELSE 'pendente' END AS status, criado_em FROM usuario ORDER BY status_ativo ASC, nm_usuario")->fetchAll(PDO::FETCH_ASSOC);
+        $usuarios = $conexao->query("SELECT id_usuario AS id, nm_usuario AS nome, email_usuario AS email, CASE cargo_usuario WHEN 'Supervisor_Geral' THEN 'supervisor_geral' WHEN 'Auxiliar_Fiscal' THEN 'auxiliar_fiscal' ELSE 'auxiliar_de_logística' END AS papel, status_ativo AS status, criado_em FROM usuario ORDER BY FIELD(status_ativo, 'pendente', 'ativo', 'bloqueado'), nm_usuario")->fetchAll(PDO::FETCH_ASSOC);
         responderJson(['usuarios' => $usuarios]);
     }
 
@@ -115,20 +118,20 @@ try {
             'auxiliar_fiscal' => 'Auxiliar_Fiscal',
             'supervisor_geral' => 'Supervisor_Geral',
         ];
-        $alvo = $conexao->prepare("SELECT CASE cargo_usuario WHEN 'Supervisor_Geral' THEN 'supervisor_geral' WHEN 'Auxiliar_Fiscal' THEN 'auxiliar_fiscal' ELSE 'auxiliar_de_logística' END AS papel, CASE WHEN status_ativo = 1 THEN 'ativo' ELSE 'pendente' END AS status FROM usuario WHERE id_usuario = ?");
+        $alvo = $conexao->prepare("SELECT CASE cargo_usuario WHEN 'Supervisor_Geral' THEN 'supervisor_geral' WHEN 'Auxiliar_Fiscal' THEN 'auxiliar_fiscal' ELSE 'auxiliar_de_logística' END AS papel, status_ativo AS status FROM usuario WHERE id_usuario = ?");
         $alvo->execute([$id]);
         $anterior = $alvo->fetch(PDO::FETCH_ASSOC);
         if (!$anterior) {
             responderJson(['erro' => 'Conta não encontrada.'], 404);
         }
         if ($anterior['papel'] === 'supervisor_geral' && $anterior['status'] === 'ativo' && ($papel !== 'supervisor_geral' || $status !== 'ativo')) {
-            $total = (int) $conexao->query("SELECT COUNT(*) FROM usuario WHERE cargo_usuario = 'Supervisor_Geral' AND status_ativo = 1")->fetchColumn();
+            $total = (int) $conexao->query("SELECT COUNT(*) FROM usuario WHERE cargo_usuario = 'Supervisor_Geral' AND status_ativo = 'ativo'")->fetchColumn();
             if ($total <= 1) {
                 responderJson(['erro' => 'O sistema precisa manter pelo menos um supervisor_geral ativo.'], 409);
             }
         }
         $atualiza = $conexao->prepare('UPDATE usuario SET cargo_usuario = ?, status_ativo = ? WHERE id_usuario = ?');
-        $atualiza->execute([$cargos[$papel], $status === 'ativo' ? 1 : 0, $id]);
+        $atualiza->execute([$cargos[$papel], $status, $id]);
         responderJson(['mensagem' => 'Permissões atualizadas.']);
     }
 
