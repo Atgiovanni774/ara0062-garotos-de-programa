@@ -49,8 +49,6 @@ O tema escuro fica em um arquivo separado (`frontend/css/tema-noite.css`) e só 
 | `--superficie` | `#ffffff` | `#141e1a` |
 | `--texto` | `#1c2723` | `#e5eee9` |
 
-> Conferir os pares de contraste de novo no WebAIM Contrast Checker antes da entrega, já que as cores mudaram em relação à primeira versão.
-
 ### Tipografia
 
 **Fonte:** `Poppins`, com plano B `Arial, sans-serif`. **Pesos:** 400, 500, 600 e 700.
@@ -150,16 +148,14 @@ Favoritos, leituras confirmadas, progresso dos treinamentos e buscas sem resulta
 
 ## Quem fez o quê
 
-| Integrante | Usuário GitHub | Páginas, arquivos ou funcionalidades construídas |
-| --- | --- | --- |
-| Arthur Giovanni Lacerda Lisboa | @Atgiovanni774 | Liderança e organização das entregas da equipe e do projeto. |
-| Jonata Romano Guimarães | @JonataRomano | Banco de dados MySQL e integração com PHP: `backend/sql/banco.sql` e `backend/config/conexao.php`. |
-| Guilherme Lopes Gomes | @Guilhermez7 | Estrutura e conteúdo das seções da página em `frontend/index.html`. |
-| Matheus Tadeu Nunes Vidigal Tiote | @matheustnvtiote-commits | Cabeçalho, menu e navegação entre as telas em `frontend/index.html` e `frontend/js/script.js`. |
-| Felipe Herminio Nunes | A confirmar | Estrutura das tabelas e listagem de registros do projeto. |
-| Marcos Rodrigues Rosa | A confirmar | Formulário de contato, validação e envio: `frontend/index.html`, `frontend/js/script.js` e `backend/processa-contato.php`. |
-
-Antes da entrega, cada integrante deve confirmar que a descrição corresponde ao que realmente construiu e preencher seu usuário GitHub. A rubrica avalia individualmente se a pessoa consegue explicar a parte atribuída a ela.
+| Integrante                            |  Principais Responsabilidade       | Matrícula                          | Usuário GitHub                     | 
+| ------------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| *Arthur Giovanni Lacerda Lisboa*      | Liderança e organização do projeto | 202601758233                       | @Atgiovanni774                     |
+| *Jonata Romano Guimarães*             | Criação e integração Banco de Dados| 202603331725                       | @JonataRomano                      |
+| *Guilherme Lopes Gomes*               | HTML Body                          | 202602601851                       | @Guilhermez7                       |
+| *Matheus Tadeu Nunes Vidigal Tiote*   | Cabeçalho e Navegação              | 202603302521                       | @matheustnvtiote-commits           |
+| *Felipe Herminio Nunes*               | Tabelas                            |                                    |                                    |
+| *Marcos Rodrigues Rosa*               | Formulários                        |                                    |                                    |
 
 ---
 
