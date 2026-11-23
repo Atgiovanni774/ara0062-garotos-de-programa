@@ -88,7 +88,7 @@ $numero = $conexao->lastInsertId();
 <body>
 <header>
 <h1>Equipe Garotos de Programa</h1>
-<p>Estudante de Sistemas de Informação</p>
+<p>Portal de Gestão e Acesso ao Conhecimento Operacional</p>
 </header>
 <main>
 <section id="resposta">
