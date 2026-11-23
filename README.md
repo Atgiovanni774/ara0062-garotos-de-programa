@@ -148,14 +148,14 @@ Favoritos, leituras confirmadas, progresso dos treinamentos e buscas sem resulta
 
 ## Quem fez o quê
 
-| Integrante                            |  Principais Responsabilidade       | Matrícula                          | Usuário GitHub                     | 
-| ------------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| *Arthur Giovanni Lacerda Lisboa*      | Liderança e organização do projeto | 202601758233                       | @Atgiovanni774                     |
-| *Jonata Romano Guimarães*             | Criação e integração Banco de Dados| 202603331725                       | @JonataRomano                      |
-| *Guilherme Lopes Gomes*               | HTML Body                          | 202602601851                       | @Guilhermez7                       |
-| *Matheus Tadeu Nunes Vidigal Tiote*   | Cabeçalho e Navegação              | 202603302521                       | @matheustnvtiote-commits           |
-| *Felipe Herminio Nunes*               | Tabelas                            |                                    |                                    |
-| *Marcos Rodrigues Rosa*               | Formulários                        |                                    |                                    |
+| Integrante | Usuário GitHub | Páginas, arquivos ou funcionalidades construídas |
+| --- | --- | --- |
+| Arthur Giovanni Lacerda Lisboa | @Atgiovanni774 | Liderança e organização das entregas da equipe. Identidade visual e estilos (`frontend/css/estilo.css` e `frontend/css/tema-noite.css`, incluindo o modo escuro e o rodapé), revisão geral do conteúdo do site e correção de bugs de validação. |
+| Jonata Romano Guimarães | @JonataRomano | Banco de dados MySQL e integração com PHP: `backend/sql/banco.sql` e `backend/config/conexao.php`. |
+| Guilherme Lopes Gomes | @Guilhermez7 | Estrutura e conteúdo das seções da página em `frontend/index.html`. |
+| Matheus Tadeu Nunes Vidigal Tiote | @matheustnvtiote-commits | Cabeçalho, menu e navegação entre as telas em `frontend/index.html` e `frontend/js/script.js`. |
+| Felipe Herminio Nunes | A confirmar | Estrutura das tabelas e listagem de registros do projeto. |
+| Marcos Rodrigues Rosa | A confirmar | Formulário de contato, validação e envio: `frontend/index.html`, `frontend/js/script.js` e `backend/processa-contato.php`. |
 
 ---
 
