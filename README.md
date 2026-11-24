@@ -2,7 +2,7 @@
 
 *Assunto:* Centralização, padronização e consulta de procedimentos, instruções de trabalho e normas de segurança.
 
-*Equipe Garotos de Programa:* Arthur Giovanni Lacerda Lisboa · Jonata Romano Guimarães · Guilherme Lopes Gomes · Matheus Tadeu Nunes Vidigal Tiote · Felipe Herminio Nunes · Marcos Rodrigues Rosa
+*Equipe Garotos de Programa:* Arthur Giovanni Lacerda Lisboa · Jonata Romano Guimarães · Guilherme Lopes Gomes · Matheus Tadeu Nunes Vidigal Tiote · Felipe Herminio Nunes
 
 *Disciplina:* ARA0062 — Desenvolvimento Web em HTML5, CSS, JavaScript e PHP
 
