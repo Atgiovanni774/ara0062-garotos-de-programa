@@ -155,7 +155,6 @@ Favoritos, leituras confirmadas, progresso dos treinamentos e buscas sem resulta
 | Guilherme Lopes Gomes | @Guilhermez7 | Estrutura e conteúdo das seções da página em `frontend/index.html`. |
 | Matheus Tadeu Nunes Vidigal Tiote | @matheustnvtiote-commits | Cabeçalho, menu e navegação entre as telas em `frontend/index.html` e `frontend/js/script.js`. |
 | Felipe Herminio Nunes | A confirmar | Estrutura das tabelas e listagem de registros do projeto. |
-| Marcos Rodrigues Rosa | A confirmar | Formulário de contato, validação e envio: `frontend/index.html`, `frontend/js/script.js` e `backend/processa-contato.php`. |
 
 ---
 
