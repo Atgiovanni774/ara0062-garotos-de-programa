@@ -154,7 +154,7 @@ Favoritos, leituras confirmadas, progresso dos treinamentos e buscas sem resulta
 | Jonata Romano Guimarães | @JonataRomano | Banco de dados MySQL e integração com PHP: `backend/sql/banco.sql` e `backend/config/conexao.php`. |
 | Guilherme Lopes Gomes | @Guilhermez7 | Estrutura e conteúdo das seções da página em `frontend/index.html`. |
 | Matheus Tadeu Nunes Vidigal Tiote | @matheustnvtiote-commits | Cabeçalho, menu e navegação entre as telas em `frontend/index.html` e `frontend/js/script.js`. |
-| Felipe Herminio Nunes | felipenunesrosangela-art | Estrutura das tabelas e listagem de registros do projeto. |
+| Felipe Herminio Nunes | @felipenunesrosangela-art | Estrutura das tabelas e listagem de registros do projeto. |
 
 ---
 
